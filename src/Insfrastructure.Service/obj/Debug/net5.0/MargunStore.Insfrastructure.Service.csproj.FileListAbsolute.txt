@@ -1,0 +1,11 @@
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\bin\Debug\net5.0\MargunStore.Insfrastructure.Service.deps.json
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\bin\Debug\net5.0\MargunStore.Insfrastructure.Service.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\bin\Debug\net5.0\ref\MargunStore.Insfrastructure.Service.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\bin\Debug\net5.0\MargunStore.Insfrastructure.Service.pdb
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\MargunStore.Insfrastructure.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\MargunStore.Insfrastructure.Service.AssemblyInfoInputs.cache
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\MargunStore.Insfrastructure.Service.AssemblyInfo.cs
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\MargunStore.Insfrastructure.Service.csproj.CoreCompileInputs.cache
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\MargunStore.Insfrastructure.Service.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\ref\MargunStore.Insfrastructure.Service.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Insfrastructure.Service\obj\Debug\net5.0\MargunStore.Insfrastructure.Service.pdb

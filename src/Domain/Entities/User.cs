@@ -1,4 +1,6 @@
-﻿namespace MargunStore.Domain.Entities
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace MargunStore.Domain.Entities
 {
     public class User : IdentityUser<string>
     {

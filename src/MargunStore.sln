@@ -13,21 +13,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - CrossCutting", "4 - Cro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Test", "5 - Test", "{4B15E64D-6CA3-4D6C-A7E1-3C7EBC23C654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.Api", "Api\MargunStore.Api.csproj", "{79EB6E50-82E8-418F-8882-7CA619F98F8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MargunStore.Api", "Api\MargunStore.Api.csproj", "{79EB6E50-82E8-418F-8882-7CA619F98F8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.Domain", "Domain\MargunStore.Domain.csproj", "{FD022310-4D5D-4B82-9CF8-4DAC2504884D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MargunStore.Domain", "Domain\MargunStore.Domain.csproj", "{FD022310-4D5D-4B82-9CF8-4DAC2504884D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.Insfrastructure.Service", "Insfrastructure.Service\MargunStore.Insfrastructure.Service.csproj", "{0C37F9A4-DF16-4788-A44F-09705AE9E943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MargunStore.Insfrastructure.Service", "Insfrastructure.Service\MargunStore.Insfrastructure.Service.csproj", "{0C37F9A4-DF16-4788-A44F-09705AE9E943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.CrossCutting.Configuration", "CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj", "{15545AF4-15EA-4E79-93F0-E2393E9FC791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MargunStore.CrossCutting.Configuration", "CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj", "{15545AF4-15EA-4E79-93F0-E2393E9FC791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.CrossCutting.Exception", "CrossCutting.Exception\MargunStore.CrossCutting.Exception.csproj", "{C42A6B3B-6619-47F1-B334-DC11E6438638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MargunStore.CrossCutting.Exception", "CrossCutting.Exception\MargunStore.CrossCutting.Exception.csproj", "{C42A6B3B-6619-47F1-B334-DC11E6438638}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", "{ACE54DE5-05F4-48C9-90E0-BF4C0EE7DB45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.Infrastructure.Data.Query", "Infrastructure.Data.Query\MargunStore.Infrastructure.Data.Query.csproj", "{4F06CF07-B48A-44A2-9A17-ECF7915AE35A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MargunStore.Infrastructure.Data.Query", "Infrastructure.Data.Query\MargunStore.Infrastructure.Data.Query.csproj", "{4F06CF07-B48A-44A2-9A17-ECF7915AE35A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructor.Data.Command", "Infrastructor.Data.Command\Infrastructor.Data.Command.csproj", "{F3D80BBE-71F7-405D-B518-ED9B8EA83EFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MargunStore.Infrastructure.Data", "Infrastructure.Data\MargunStore.Infrastructure.Data.csproj", "{1FED01B6-544E-4B02-9D54-B5D6835DA15B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{4F06CF07-B48A-44A2-9A17-ECF7915AE35A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F06CF07-B48A-44A2-9A17-ECF7915AE35A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F06CF07-B48A-44A2-9A17-ECF7915AE35A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3D80BBE-71F7-405D-B518-ED9B8EA83EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3D80BBE-71F7-405D-B518-ED9B8EA83EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3D80BBE-71F7-405D-B518-ED9B8EA83EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3D80BBE-71F7-405D-B518-ED9B8EA83EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FED01B6-544E-4B02-9D54-B5D6835DA15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FED01B6-544E-4B02-9D54-B5D6835DA15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FED01B6-544E-4B02-9D54-B5D6835DA15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FED01B6-544E-4B02-9D54-B5D6835DA15B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,7 +75,7 @@ Global
 		{C42A6B3B-6619-47F1-B334-DC11E6438638} = {30AEE6BF-9D3C-40F8-B961-A16F5B2BE71E}
 		{ACE54DE5-05F4-48C9-90E0-BF4C0EE7DB45} = {CB7F4DC6-5E5E-4D2E-BB04-61B54EB19B94}
 		{4F06CF07-B48A-44A2-9A17-ECF7915AE35A} = {ACE54DE5-05F4-48C9-90E0-BF4C0EE7DB45}
-		{F3D80BBE-71F7-405D-B518-ED9B8EA83EFC} = {ACE54DE5-05F4-48C9-90E0-BF4C0EE7DB45}
+		{1FED01B6-544E-4B02-9D54-B5D6835DA15B} = {ACE54DE5-05F4-48C9-90E0-BF4C0EE7DB45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DF0C0F3-DB1B-46A6-A4FF-45A8C845B432}

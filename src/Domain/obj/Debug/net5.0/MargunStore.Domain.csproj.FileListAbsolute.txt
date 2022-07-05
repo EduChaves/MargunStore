@@ -1,0 +1,11 @@
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\bin\Debug\net5.0\MargunStore.Domain.deps.json
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\bin\Debug\net5.0\MargunStore.Domain.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\bin\Debug\net5.0\ref\MargunStore.Domain.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\bin\Debug\net5.0\MargunStore.Domain.pdb
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\MargunStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\MargunStore.Domain.AssemblyInfoInputs.cache
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\MargunStore.Domain.AssemblyInfo.cs
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\MargunStore.Domain.csproj.CoreCompileInputs.cache
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\MargunStore.Domain.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\ref\MargunStore.Domain.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Domain\obj\Debug\net5.0\MargunStore.Domain.pdb
