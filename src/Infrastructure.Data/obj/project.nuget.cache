@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "N7MXD9Y7/wobZ6405GUpjY8pbH49TnRNpFhZRNNtv98oNZEehzSTBraV44LdptZcMfGJ++nSvwTONy/d5CvTwg==",
+  "dgSpecHash": "cYnGgVN7TrZAbrQgvma6AC7t1Z6aunaPy1+fchMPUMEC1BPzC+CG1mwRqcRbszew1FUoRDl8UItd9dIhCXtj+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Infrastructure.Data\\MargunStore.Infrastructure.Data.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\chave\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\chave\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\chave\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\chave\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.17\\microsoft.aspnetcore.cryptography.keyderivation.5.0.17.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.17\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.17.nupkg.sha512",
