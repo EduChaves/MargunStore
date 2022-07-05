@@ -1,4 +1,4 @@
-﻿using MargunStore.Domain.Entities;
+﻿using MargunStore.CrossCutting.Configuration.Entities;
 
 namespace MargunStore.Infrastructure.Data.Interfaces
 {

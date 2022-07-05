@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MargunStore.Domain.Entities
+namespace MargunStore.CrossCutting.Configuration.Entities
 {
     public class Sale : EntityBase
     {

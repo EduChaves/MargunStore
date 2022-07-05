@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\MargunStore.Domain.csproj" />
+    <ProjectReference Include="..\CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MargunStore.Infrastructure.Data.Interfaces;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -6,9 +8,29 @@ namespace MargunStore.Domain.Commands.v1.Category.Create
 {
     public class CreateCategoryCommandHadler : IRequestHandler<CreateCategoryCommand, CreateCategoryCommandResponse>
     {
-        public Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        private readonly IMapper _mapper;
+        private readonly ICategoryRepository _repository;
+
+        public CreateCategoryCommandHadler(IMapper mapper, ICategoryRepository repository)
         {
-            throw new System.NotImplementedException();
+            _mapper = mapper;
+            _repository = repository;
+        }
+
+        public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var category = _mapper.Map<CrossCutting.Configuration.Entities.Category>(request);
+                await _repository.Add(category);
+                
+                return new CreateCategoryCommandResponse();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

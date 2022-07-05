@@ -1,4 +1,4 @@
-﻿using MargunStore.Domain.Entities;
+﻿using MargunStore.CrossCutting.Configuration.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data\MargunStore.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
 </Project>

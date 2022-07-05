@@ -8,7 +8,9 @@ namespace MargunStore.Domain.Commands.v1.Category.Create
         {
             RuleFor(value => value.Name)
                 .NotEmpty()
-                .NotNull();
+                    .WithMessage("O campo name é obrigatório")
+                .NotNull()
+                    .WithMessage("O campo name é obrigatório");
         }
     }
 }

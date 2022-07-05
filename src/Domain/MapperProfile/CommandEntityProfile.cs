@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using MargunStore.CrossCutting.Configuration.Entities;
 using MargunStore.Domain.Commands.v1.Category.Create;
-using MargunStore.Domain.Entities;
 
 namespace MargunStore.Domain.MapperProfile
 {

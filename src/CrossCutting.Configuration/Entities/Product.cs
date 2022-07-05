@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MargunStore.Domain.Entities
+namespace MargunStore.CrossCutting.Configuration.Entities
 {
     public class Product : EntityBase
     {

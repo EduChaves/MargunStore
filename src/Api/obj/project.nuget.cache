@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "prafbOuJlqdXIY6VXIfBuQXSIOQll1T7blubOt0D2p0RBpFgpeIvXc/f5U7FLi+WVh40FQK0yrGhsZI/lUj4Kg==",
+  "dgSpecHash": "BvF0dbb1n/F7tnRplcFnr5jJWfJNDrRVGi0sVjIUUAPeEePTV1DgZAk43Sql6sFxHoTZO8oD/lvKo05pZSSA4A==",
   "success": true,
   "projectFilePath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Api\\MargunStore.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chave\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512",
+    "C:\\Users\\chave\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.1.2\\fluentvalidation.aspnetcore.11.1.2.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.1.0\\fluentvalidation.dependencyinjectionextensions.11.1.0.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\chave\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",

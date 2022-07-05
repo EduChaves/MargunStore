@@ -1,4 +1,4 @@
-﻿using MargunStore.Domain.Entities;
+﻿using MargunStore.CrossCutting.Configuration.Entities;
 using MargunStore.Infrastructure.Data.Settings;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

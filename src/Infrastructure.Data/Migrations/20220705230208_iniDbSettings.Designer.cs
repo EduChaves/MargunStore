@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MargunStore.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220705000452_initDbSettigns")]
-    partial class initDbSettigns
+    [Migration("20220705230208_iniDbSettings")]
+    partial class iniDbSettings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Address", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Bag", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Bag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Bag");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Category", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,7 +89,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("BIT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -101,7 +103,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Client", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,7 +138,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Client");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Product", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -182,7 +184,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.ProductImages", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.ProductImages", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,7 +204,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Role", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -235,7 +237,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Role");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Sale", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Sale", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -265,7 +267,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("Sale");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.User", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -448,9 +450,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Address", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Address", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Client", "Client")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -459,15 +461,15 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Client", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Client", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Bag", "Bag")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Bag", "Bag")
                         .WithMany()
                         .HasForeignKey("BagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MargunStore.Domain.Entities.User", "User")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
@@ -476,13 +478,13 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Product", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Product", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Bag", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Bag", null)
                         .WithMany("Products")
                         .HasForeignKey("BagId");
 
-                    b.HasOne("MargunStore.Domain.Entities.Category", "Category")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -491,26 +493,26 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.ProductImages", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.ProductImages", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Product", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Product", null)
                         .WithMany("Images")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Sale", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Sale", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Address", "Address")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MargunStore.Domain.Entities.Bag", "Bag")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Bag", "Bag")
                         .WithOne("Sale")
-                        .HasForeignKey("MargunStore.Domain.Entities.Sale", "BagId")
+                        .HasForeignKey("MargunStore.CrossCutting.Configuration.Entities.Sale", "BagId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -519,9 +521,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.Navigation("Bag");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.User", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.User", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Role", "Role")
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId1");
 
@@ -530,7 +532,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Role", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -539,7 +541,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.User", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -548,7 +550,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.User", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -557,13 +559,13 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.Role", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MargunStore.Domain.Entities.User", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -572,21 +574,21 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("MargunStore.Domain.Entities.User", null)
+                    b.HasOne("MargunStore.CrossCutting.Configuration.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Bag", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Bag", b =>
                 {
                     b.Navigation("Products");
 
                     b.Navigation("Sale");
                 });
 
-            modelBuilder.Entity("MargunStore.Domain.Entities.Product", b =>
+            modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Product", b =>
                 {
                     b.Navigation("Images");
                 });
