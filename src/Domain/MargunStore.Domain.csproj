@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj" />
+    <ProjectReference Include="..\CrossCutting.Exception\MargunStore.CrossCutting.Exception.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\MargunStore.Infrastructure.Data.csproj" />
   </ItemGroup>
 

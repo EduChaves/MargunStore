@@ -1600,11 +1600,20 @@
           "MargunStore.CrossCutting.Configuration.dll": {}
         }
       },
+      "MargunStore.CrossCutting.Exception/1.0.0": {
+        "runtime": {
+          "MargunStore.CrossCutting.Exception.dll": {}
+        },
+        "compile": {
+          "MargunStore.CrossCutting.Exception.dll": {}
+        }
+      },
       "MargunStore.Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.1",
           "FluentValidation": "11.1.0",
           "MargunStore.CrossCutting.Configuration": "1.0.0",
+          "MargunStore.CrossCutting.Exception": "1.0.0",
           "MargunStore.Infrastructure.Data": "1.0.0",
           "MediatR": "10.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
@@ -4088,6 +4097,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "MargunStore.CrossCutting.Configuration/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MargunStore.CrossCutting.Exception/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

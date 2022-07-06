@@ -1,4 +1,5 @@
 ﻿using MargunStore.Domain.Commands.v1.Category.Create;
+using MargunStore.Domain.Commands.v1.Category.Delete;
 using MargunStore.Domain.Commands.v1.Category.Update;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,6 @@ namespace MargunStore.Api.Controllers
         public async Task<IActionResult> CreateCategory(CreateCategoryCommand request)
         {
             await _mediator.Send(request);
-
             return Created(string.Empty, null);
         }
 
@@ -26,7 +26,13 @@ namespace MargunStore.Api.Controllers
         public async Task<IActionResult> UpdateCategory(UpdateCategoryCommand request)
         {
             await _mediator.Send(request);
+            return Ok();
+        }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCategory(DeleteCategoryCommand request)
+        {
+            await _mediator.Send(request);
             return Ok();
         }
     }

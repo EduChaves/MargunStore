@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MargunStore.CrossCutting.Exception;
 using MargunStore.Infrastructure.Data.Interfaces;
 using MediatR;
 using System.Threading;
@@ -26,10 +27,9 @@ namespace MargunStore.Domain.Commands.v1.Category.Create
                 
                 return new CreateCategoryCommandResponse();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                throw new CategoryException(ex.Message);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
 using MargunStore.Domain.Commands.v1.Category.Create;
+using MargunStore.Domain.Commands.v1.Category.Delete;
 using MargunStore.Domain.Commands.v1.Category.Update;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
@@ -32,7 +33,8 @@ namespace MargunStore.Api.Infrastructure.IoC
             var handlerAssemblies = new Assembly[]
             {
                 typeof(CreateCategoryCommandHadler).Assembly,
-                typeof(UpdateCategoryCommandHandler).Assembly
+                typeof(UpdateCategoryCommandHandler).Assembly,
+                typeof(DeleteCategoryCommandHandler).Assembly
             };
 
             _services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -42,6 +44,7 @@ namespace MargunStore.Api.Infrastructure.IoC
             {
                 value.RegisterValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<UpdateCategoryCommandValidator>();
+                value.RegisterValidatorsFromAssemblyContaining<DeleteCategoryCommandValidator>();
             });
           
             _services.AddSwaggerGen(c =>

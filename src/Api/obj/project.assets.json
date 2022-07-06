@@ -1775,6 +1775,16 @@
           "bin/placeholder/MargunStore.CrossCutting.Configuration.dll": {}
         }
       },
+      "MargunStore.CrossCutting.Exception/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/MargunStore.CrossCutting.Exception.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MargunStore.CrossCutting.Exception.dll": {}
+        }
+      },
       "MargunStore.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -1782,6 +1792,7 @@
           "AutoMapper": "11.0.1",
           "FluentValidation": "11.1.0",
           "MargunStore.CrossCutting.Configuration": "1.0.0",
+          "MargunStore.CrossCutting.Exception": "1.0.0",
           "MargunStore.Infrastructure.Data": "1.0.0",
           "MediatR": "10.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
@@ -6417,6 +6428,11 @@
       "type": "project",
       "path": "../CrossCutting.Configuration/MargunStore.CrossCutting.Configuration.csproj",
       "msbuildProject": "../CrossCutting.Configuration/MargunStore.CrossCutting.Configuration.csproj"
+    },
+    "MargunStore.CrossCutting.Exception/1.0.0": {
+      "type": "project",
+      "path": "../CrossCutting.Exception/MargunStore.CrossCutting.Exception.csproj",
+      "msbuildProject": "../CrossCutting.Exception/MargunStore.CrossCutting.Exception.csproj"
     },
     "MargunStore.Domain/1.0.0": {
       "type": "project",
