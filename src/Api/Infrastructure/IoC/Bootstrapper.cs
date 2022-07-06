@@ -1,5 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
 using MargunStore.Domain.Commands.v1.Category.Create;
+using MargunStore.Domain.Commands.v1.Category.Update;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
@@ -23,20 +24,25 @@ namespace MargunStore.Api.Infrastructure.IoC
             _configuration = configuration;
             _services = services;
 
-            Init();
+            Initialize();
         }
 
-        private void Init()
+        private void Initialize()
         {
             var handlerAssemblies = new Assembly[]
             {
-                typeof(CreateCategoryCommandHadler).Assembly
+                typeof(CreateCategoryCommandHadler).Assembly,
+                typeof(UpdateCategoryCommandHandler).Assembly
             };
 
             _services.AddScoped<ICategoryRepository, CategoryRepository>();
             
             _services.AddDbContext<Context>(value => value.UseSqlServer(_configuration.GetConnectionString("DatabaseConnection")).EnableSensitiveDataLogging());
-            _services.AddControllers().AddFluentValidation(value => value.RegisterValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>());
+            _services.AddControllers().AddFluentValidation(value => 
+            {
+                value.RegisterValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>();
+                value.RegisterValidatorsFromAssemblyContaining<UpdateCategoryCommandValidator>();
+            });
           
             _services.AddSwaggerGen(c =>
             {
