@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\MargunStore.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data.Query\MargunStore.Infrastructure.Data.Query.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\MargunStore.Infrastructure.Data.csproj" />
   </ItemGroup>
 

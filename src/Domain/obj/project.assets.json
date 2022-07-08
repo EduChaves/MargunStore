@@ -6019,8 +6019,7 @@
       "MargunStore.CrossCutting.Configuration >= 1.0.0",
       "MargunStore.CrossCutting.Exception >= 1.0.0",
       "MargunStore.Infrastructure.Data >= 1.0.0",
-      "MediatR >= 10.0.1",
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17"
+      "MediatR >= 10.0.1"
     ]
   },
   "packageFolders": {
@@ -6091,10 +6090,6 @@
           "MediatR": {
             "target": "Package",
             "version": "[10.0.1, )"
-          },
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[5.0.17, )"
           }
         },
         "imports": [

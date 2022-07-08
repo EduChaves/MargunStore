@@ -1794,8 +1794,7 @@
           "MargunStore.CrossCutting.Configuration": "1.0.0",
           "MargunStore.CrossCutting.Exception": "1.0.0",
           "MargunStore.Infrastructure.Data": "1.0.0",
-          "MediatR": "10.0.1",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
+          "MediatR": "10.0.1"
         },
         "compile": {
           "bin/placeholder/MargunStore.Domain.dll": {}
@@ -1817,6 +1816,24 @@
         },
         "runtime": {
           "bin/placeholder/MargunStore.Infrastructure.Data.dll": {}
+        }
+      },
+      "MargunStore.Infrastructure.Data.Query/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper": "11.0.1",
+          "FluentValidation": "11.1.0",
+          "MargunStore.CrossCutting.Configuration": "1.0.0",
+          "MargunStore.CrossCutting.Exception": "1.0.0",
+          "MargunStore.Infrastructure.Data": "1.0.0",
+          "MediatR": "10.0.1"
+        },
+        "compile": {
+          "bin/placeholder/MargunStore.Infrastructure.Data.Query.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MargunStore.Infrastructure.Data.Query.dll": {}
         }
       }
     }
@@ -6443,6 +6460,11 @@
       "type": "project",
       "path": "../Infrastructure.Data/MargunStore.Infrastructure.Data.csproj",
       "msbuildProject": "../Infrastructure.Data/MargunStore.Infrastructure.Data.csproj"
+    },
+    "MargunStore.Infrastructure.Data.Query/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure.Data.Query/MargunStore.Infrastructure.Data.Query.csproj",
+      "msbuildProject": "../Infrastructure.Data.Query/MargunStore.Infrastructure.Data.Query.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6451,6 +6473,7 @@
       "FluentValidation.AspNetCore >= 11.1.2",
       "MargunStore.Domain >= 1.0.0",
       "MargunStore.Infrastructure.Data >= 1.0.0",
+      "MargunStore.Infrastructure.Data.Query >= 1.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
@@ -6494,6 +6517,9 @@
           "projectReferences": {
             "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Domain\\MargunStore.Domain.csproj": {
               "projectPath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Domain\\MargunStore.Domain.csproj"
+            },
+            "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Infrastructure.Data.Query\\MargunStore.Infrastructure.Data.Query.csproj": {
+              "projectPath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Infrastructure.Data.Query\\MargunStore.Infrastructure.Data.Query.csproj"
             },
             "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Infrastructure.Data\\MargunStore.Infrastructure.Data.csproj": {
               "projectPath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\Infrastructure.Data\\MargunStore.Infrastructure.Data.csproj"

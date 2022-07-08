@@ -4,4 +4,16 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.1.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj" />
+    <ProjectReference Include="..\CrossCutting.Exception\MargunStore.CrossCutting.Exception.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data\MargunStore.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
 </Project>

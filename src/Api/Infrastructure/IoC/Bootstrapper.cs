@@ -5,6 +5,8 @@ using MargunStore.Domain.Commands.v1.Category.Update;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
+using MargunStore.Infrastructure.Data.Query.MapperProfile;
+using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
 using MargunStore.Infrastructure.Data.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +36,14 @@ namespace MargunStore.Api.Infrastructure.IoC
             {
                 typeof(CreateCategoryCommandHadler).Assembly,
                 typeof(UpdateCategoryCommandHandler).Assembly,
-                typeof(DeleteCategoryCommandHandler).Assembly
+                typeof(DeleteCategoryCommandHandler).Assembly,
+                typeof(GetCategoryQueryHandler).Assembly
+            };
+
+            var mapperAssemblies = new Assembly[]
+            {
+                typeof(CommandEntityProfile).Assembly,
+                typeof(EntityQueryResponseProfile).Assembly
             };
 
             _services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -52,7 +61,7 @@ namespace MargunStore.Api.Infrastructure.IoC
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
             
-            _services.AddAutoMapper(typeof(CommandEntityProfile));
+            _services.AddAutoMapper(mapperAssemblies);
             _services.AddMediatR(handlerAssemblies);
         }
     }

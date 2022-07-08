@@ -83,3 +83,5 @@ C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\MargunStore.Ap
 C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\ref\MargunStore.Api.dll
 C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\MargunStore.Api.pdb
 C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\MargunStore.Api.genruntimeconfig.cache
+C:\Users\chave\Documents\dev\MargunStore\src\Api\bin\Debug\net5.0\MargunStore.Infrastructure.Data.Query.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Api\bin\Debug\net5.0\MargunStore.Infrastructure.Data.Query.pdb

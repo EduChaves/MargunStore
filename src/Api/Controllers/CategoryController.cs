@@ -1,8 +1,10 @@
 ﻿using MargunStore.Domain.Commands.v1.Category.Create;
 using MargunStore.Domain.Commands.v1.Category.Delete;
 using MargunStore.Domain.Commands.v1.Category.Update;
+using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MargunStore.Api.Controllers
@@ -14,6 +16,9 @@ namespace MargunStore.Api.Controllers
         private readonly IMediator _mediator;
 
         public CategoryController(IMediator mediator) => _mediator = mediator;
+
+        [HttpGet]
+        public async Task<IEnumerable<GetCategoryQueryResponse>> GetCategories() => await _mediator.Send(new GetCategoryQuery());
 
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryCommand request)
