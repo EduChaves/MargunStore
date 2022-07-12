@@ -3,6 +3,7 @@ using MargunStore.Domain.Commands.v1.Category.Create;
 using MargunStore.Domain.Commands.v1.Category.Delete;
 using MargunStore.Domain.Commands.v1.Category.Update;
 using MargunStore.Domain.Commands.v1.Product.Create;
+using MargunStore.Domain.Commands.v1.Product.Update;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
@@ -39,7 +40,8 @@ namespace MargunStore.Api.Infrastructure.IoC
                 typeof(UpdateCategoryCommandHandler).Assembly,
                 typeof(DeleteCategoryCommandHandler).Assembly,
                 typeof(GetCategoryQueryHandler).Assembly,
-                typeof(CreateProductCommandHandler).Assembly
+                typeof(CreateProductCommandHandler).Assembly,
+                typeof(UpdateProductCommandHandler).Assembly
             };
 
             var mapperAssemblies = new Assembly[]
@@ -58,6 +60,7 @@ namespace MargunStore.Api.Infrastructure.IoC
                 value.RegisterValidatorsFromAssemblyContaining<UpdateCategoryCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<DeleteCategoryCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<CreateProductCommandValidator>();
+                value.RegisterValidatorsFromAssemblyContaining<UpdateProductCommandValidator>();
             });
           
             _services.AddSwaggerGen(c =>

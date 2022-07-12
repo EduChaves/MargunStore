@@ -1,4 +1,5 @@
 ﻿using MargunStore.Domain.Commands.v1.Product.Create;
+using MargunStore.Domain.Commands.v1.Product.Update;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -18,6 +19,13 @@ namespace MargunStore.Api.Controllers
         {
             await _mediator.Send(request);
             return Created(string.Empty, null);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(UpdateProductCommand request)
+        {
+            await _mediator.Send(request);
+            return Ok();
         }
     }
 }
