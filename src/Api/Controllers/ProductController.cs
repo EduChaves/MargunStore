@@ -1,4 +1,5 @@
 ﻿using MargunStore.Domain.Commands.v1.Product.Create;
+using MargunStore.Domain.Commands.v1.Product.Delete;
 using MargunStore.Domain.Commands.v1.Product.Update;
 using MargunStore.Infrastructure.Data.Query.Queries.v1.Product.GetProducts;
 using MediatR;
@@ -30,6 +31,13 @@ namespace MargunStore.Api.Controllers
         public async Task<IActionResult> UpdateProduct(UpdateProductCommand request)
         {
             await _mediator.Send(request);
+            return Ok();
+        }
+        
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _mediator.Send(new DeleteProductCommand { Id = id });
             return Ok();
         }
     }
