@@ -8,9 +8,9 @@ namespace MargunStore.Infrastructure.Data.Repositories
     {
         private readonly Context _context;
 
-        public IQueryable<TEntity> GetAll() => _context.Set<TEntity>();
+        public virtual IQueryable<TEntity> GetEntity() => _context.Set<TEntity>();
 
-        public async Task<TEntity> GetById(int id) => await _context.Set<TEntity>().FindAsync(id);
+        public virtual IQueryable<TEntity> GetEntity(int id) => _context.Set<TEntity>();
 
         public Repository(Context context) => _context = context;
 

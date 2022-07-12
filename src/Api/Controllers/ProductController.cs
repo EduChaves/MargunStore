@@ -1,7 +1,9 @@
 ﻿using MargunStore.Domain.Commands.v1.Product.Create;
 using MargunStore.Domain.Commands.v1.Product.Update;
+using MargunStore.Infrastructure.Data.Query.Queries.v1.Product.GetProducts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MargunStore.Api.Controllers
@@ -13,6 +15,9 @@ namespace MargunStore.Api.Controllers
         private readonly IMediator _mediator;
 
         public ProductController(IMediator mediator) => _mediator = mediator;
+
+        [HttpGet]
+        public async Task<IEnumerable<GetProductQueryResponse>> GetProducts(int? id) => await _mediator.Send(new GetProductQuery { Id = id});
 
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductCommand request)

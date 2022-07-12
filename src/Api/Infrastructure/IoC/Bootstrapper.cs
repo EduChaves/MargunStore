@@ -9,6 +9,7 @@ using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
 using MargunStore.Infrastructure.Data.Query.MapperProfile;
 using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
+using MargunStore.Infrastructure.Data.Query.Queries.v1.Product.GetProducts;
 using MargunStore.Infrastructure.Data.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,8 @@ namespace MargunStore.Api.Infrastructure.IoC
                 typeof(DeleteCategoryCommandHandler).Assembly,
                 typeof(GetCategoryQueryHandler).Assembly,
                 typeof(CreateProductCommandHandler).Assembly,
-                typeof(UpdateProductCommandHandler).Assembly
+                typeof(UpdateProductCommandHandler).Assembly,
+                typeof(GetProductQueryHandler).Assembly,
             };
 
             var mapperAssemblies = new Assembly[]
