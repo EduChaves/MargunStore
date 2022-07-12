@@ -2,6 +2,7 @@
 using MargunStore.Domain.Commands.v1.Category.Create;
 using MargunStore.Domain.Commands.v1.Category.Delete;
 using MargunStore.Domain.Commands.v1.Category.Update;
+using MargunStore.Domain.Commands.v1.Product.Create;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
@@ -37,7 +38,8 @@ namespace MargunStore.Api.Infrastructure.IoC
                 typeof(CreateCategoryCommandHadler).Assembly,
                 typeof(UpdateCategoryCommandHandler).Assembly,
                 typeof(DeleteCategoryCommandHandler).Assembly,
-                typeof(GetCategoryQueryHandler).Assembly
+                typeof(GetCategoryQueryHandler).Assembly,
+                typeof(CreateProductCommandHandler).Assembly
             };
 
             var mapperAssemblies = new Assembly[]
@@ -47,6 +49,7 @@ namespace MargunStore.Api.Infrastructure.IoC
             };
 
             _services.AddScoped<ICategoryRepository, CategoryRepository>();
+            _services.AddScoped<IProductRepository, ProductRepository>();
             
             _services.AddDbContext<Context>(value => value.UseSqlServer(_configuration.GetConnectionString("DatabaseConnection")).EnableSensitiveDataLogging());
             _services.AddControllers().AddFluentValidation(value => 
@@ -54,6 +57,7 @@ namespace MargunStore.Api.Infrastructure.IoC
                 value.RegisterValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<UpdateCategoryCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<DeleteCategoryCommandValidator>();
+                value.RegisterValidatorsFromAssemblyContaining<CreateProductCommandValidator>();
             });
           
             _services.AddSwaggerGen(c =>
