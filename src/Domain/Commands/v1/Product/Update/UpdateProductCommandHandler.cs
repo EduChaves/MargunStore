@@ -30,7 +30,7 @@ namespace MargunStore.Domain.Commands.v1.Product.Update
             }
             catch (Exception ex)
             {
-                throw new ProductException(ex.Message);
+                throw new ProductException(ex.Message, ex);
             }
         }
     }

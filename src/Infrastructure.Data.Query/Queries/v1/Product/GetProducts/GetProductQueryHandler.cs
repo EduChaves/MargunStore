@@ -35,7 +35,7 @@ namespace MargunStore.Infrastructure.Data.Query.Queries.v1.Product.GetProducts
             }
             catch (System.Exception ex)
             {
-                throw new ProductException(ex.Message);
+                throw new ProductException(ex.Message, ex);
             }
         }
     }

@@ -2,7 +2,7 @@
 {
     public class CategoryException : BaseException
     {
-        public CategoryException(string message) : base(message)
+        public CategoryException(string message, System.Exception innerException) : base(message, innerException)
         {
         }
     }

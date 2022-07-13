@@ -34,7 +34,7 @@ namespace MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory
             }
             catch (System.Exception ex)
             {
-                throw new CategoryException(ex.Message);
+                throw new CategoryException(ex.Message, ex);
             }
         }
     }

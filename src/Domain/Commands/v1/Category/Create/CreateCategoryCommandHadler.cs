@@ -29,7 +29,7 @@ namespace MargunStore.Domain.Commands.v1.Category.Create
             }
             catch (System.Exception ex)
             {
-                throw new CategoryException(ex.Message);
+                throw new CategoryException(ex.Message, ex);
             }
         }
     }

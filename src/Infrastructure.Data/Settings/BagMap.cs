@@ -8,6 +8,7 @@ namespace MargunStore.Infrastructure.Data.Settings
     {
         public void Configure(EntityTypeBuilder<Bag> builder)
         {
+            builder.Property(value => value.Active).HasColumnType("BIT").HasDefaultValue(1);
             builder.ToTable("Bag");
         }
     }

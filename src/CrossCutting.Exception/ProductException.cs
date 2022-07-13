@@ -2,7 +2,7 @@
 {
     public class ProductException : BaseException
     {
-        public ProductException(string message) : base(message)
+        public ProductException(string message, System.Exception innerException) : base(message, innerException)
         {
         }
     }
