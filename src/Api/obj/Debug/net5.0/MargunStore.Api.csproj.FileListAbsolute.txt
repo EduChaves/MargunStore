@@ -85,6 +85,3 @@ C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\MargunStore.Ap
 C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\ref\MargunStore.Api.dll
 C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\MargunStore.Api.pdb
 C:\Users\chave\Documents\dev\MargunStore\src\Api\obj\Debug\net5.0\MargunStore.Api.genruntimeconfig.cache
-C:\Users\chave\Documents\dev\MargunStore\src\Api\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-C:\Users\chave\Documents\dev\MargunStore\src\Api\bin\Debug\net5.0\System.Web.Http.dll
-C:\Users\chave\Documents\dev\MargunStore\src\Api\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

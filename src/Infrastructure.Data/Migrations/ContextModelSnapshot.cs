@@ -343,10 +343,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RoleId1")
+                    b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
@@ -369,7 +366,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("RoleId1");
+                    b.HasIndex("RoleId");
 
                     b.ToTable("User");
                 });
@@ -553,7 +550,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 {
                     b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Role", "Role")
                         .WithMany()
-                        .HasForeignKey("RoleId1");
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });

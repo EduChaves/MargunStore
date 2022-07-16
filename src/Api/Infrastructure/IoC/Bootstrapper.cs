@@ -7,6 +7,8 @@ using MargunStore.Domain.Commands.v1.Product.Create;
 using MargunStore.Domain.Commands.v1.Product.Delete;
 using MargunStore.Domain.Commands.v1.Product.Update;
 using MargunStore.Domain.Commands.v1.Role.Create;
+using MargunStore.Domain.Commands.v1.Role.Update;
+using MargunStore.Domain.Commands.v1.User.Create;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
@@ -48,6 +50,8 @@ namespace MargunStore.Api.Infrastructure.IoC
                 typeof(UpdateProductCommandHandler).Assembly,
                 typeof(DeleteProductCommandHandler).Assembly,
                 typeof(CreateRoleCommandHandler).Assembly,
+                typeof(UpdateRoleCommandHandler).Assembly,
+                typeof(CreateUserCommandHandler).Assembly,
 
                 typeof(GetCategoryQueryHandler).Assembly,
                 typeof(GetProductQueryHandler).Assembly,
@@ -62,6 +66,7 @@ namespace MargunStore.Api.Infrastructure.IoC
             _services.AddScoped<ICategoryRepository, CategoryRepository>();
             _services.AddScoped<IProductRepository, ProductRepository>();
             _services.AddScoped<IRoleRepository, RoleRepository>();
+            _services.AddScoped<IUserRepository, UserRepository>();
 
             _services.AddDbContext<Context>(value => value.UseSqlServer(_configuration.GetConnectionString("DatabaseConnection")).EnableSensitiveDataLogging());
             _services.AddControllers().AddFluentValidation(value => 
@@ -73,6 +78,8 @@ namespace MargunStore.Api.Infrastructure.IoC
                 value.RegisterValidatorsFromAssemblyContaining<UpdateProductCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<DeleteProductCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<CreateRoleCommandValidator>();
+                value.RegisterValidatorsFromAssemblyContaining<UpdateRoleCommandValidator>();
+                value.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
             });
           
             _services.AddSwaggerGen(c =>

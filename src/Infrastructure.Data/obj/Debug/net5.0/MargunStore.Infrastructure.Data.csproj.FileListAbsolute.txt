@@ -16,3 +16,5 @@ C:\Users\chave\Documents\dev\MargunStore\src\Infrastructure.Data\obj\Debug\net5.
 C:\Users\chave\Documents\dev\MargunStore\src\Infrastructure.Data\obj\Debug\net5.0\ref\MargunStore.Infrastructure.Data.dll
 C:\Users\chave\Documents\dev\MargunStore\src\Infrastructure.Data\obj\Debug\net5.0\MargunStore.Infrastructure.Data.pdb
 C:\Users\chave\Documents\dev\MargunStore\src\Infrastructure.Data\obj\Debug\net5.0\MargunStore.Infrastructure.Data.genruntimeconfig.cache
+C:\Users\chave\Documents\dev\MargunStore\src\Infrastructure.Data\bin\Debug\net5.0\MargunStore.CrossCutting.Exception.dll
+C:\Users\chave\Documents\dev\MargunStore\src\Infrastructure.Data\bin\Debug\net5.0\MargunStore.CrossCutting.Exception.pdb

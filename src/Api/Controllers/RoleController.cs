@@ -1,4 +1,5 @@
 ﻿using MargunStore.Domain.Commands.v1.Role.Create;
+using MargunStore.Domain.Commands.v1.Role.Update;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -19,6 +20,14 @@ namespace MargunStore.Api.Controllers
             await _mediator.Send(request);
 
             return Created(string.Empty, null);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateRole(UpdateRoleCommand request)
+        {
+            await _mediator.Send(request);
+
+            return Ok();
         }
     }
 }

@@ -111,12 +111,6 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "dependencies": {
-            "Microsoft.AspNet.WebApi.Core": {
-              "target": "Package",
-              "version": "[5.2.9, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -252,6 +246,9 @@
             "projectReferences": {
               "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\CrossCutting.Configuration\\MargunStore.CrossCutting.Configuration.csproj": {
                 "projectPath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\CrossCutting.Configuration\\MargunStore.CrossCutting.Configuration.csproj"
+              },
+              "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\CrossCutting.Exception\\MargunStore.CrossCutting.Exception.csproj": {
+                "projectPath": "C:\\Users\\chave\\Documents\\dev\\MargunStore\\src\\CrossCutting.Exception\\MargunStore.CrossCutting.Exception.csproj"
               }
             }
           }
@@ -266,6 +263,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.17, )"

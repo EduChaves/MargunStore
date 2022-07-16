@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Infrastructure.Data\MargunStore.Infrastructure.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\v1\Role\Update\" />
-  </ItemGroup>
-
 </Project>

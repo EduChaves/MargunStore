@@ -6,6 +6,8 @@ using MargunStore.Domain.Commands.v1.Category.Update;
 using MargunStore.Domain.Commands.v1.Product.Create;
 using MargunStore.Domain.Commands.v1.Product.Update;
 using MargunStore.Domain.Commands.v1.Role.Create;
+using MargunStore.Domain.Commands.v1.Role.Update;
+using MargunStore.Domain.Commands.v1.User.Create;
 
 namespace MargunStore.Domain.MapperProfile
 {
@@ -21,6 +23,9 @@ namespace MargunStore.Domain.MapperProfile
             CreateMap<UpdateProductCommand, Product>();
 
             CreateMap<CreateRoleCommand, Role>();
+            CreateMap<UpdateRoleCommand, Role>();
+
+            CreateMap<CreateUserCommand, User>();
         }
     }
 }
