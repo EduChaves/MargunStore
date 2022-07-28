@@ -2,7 +2,6 @@ C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\bin\Debug\ne
 C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\bin\Debug\net5.0\MargunStore.CrossCutting.Exception.dll
 C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\bin\Debug\net5.0\ref\MargunStore.CrossCutting.Exception.dll
 C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\bin\Debug\net5.0\MargunStore.CrossCutting.Exception.pdb
-C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\obj\Debug\net5.0\MargunStore.CrossCutting.Exception.csproj.AssemblyReference.cache
 C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\obj\Debug\net5.0\MargunStore.CrossCutting.Exception.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\obj\Debug\net5.0\MargunStore.CrossCutting.Exception.AssemblyInfoInputs.cache
 C:\Users\chave\Documents\dev\MargunStore\src\CrossCutting.Exception\obj\Debug\net5.0\MargunStore.CrossCutting.Exception.AssemblyInfo.cs
