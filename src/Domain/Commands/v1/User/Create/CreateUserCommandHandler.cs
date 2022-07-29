@@ -29,17 +29,19 @@ namespace MargunStore.Domain.Commands.v1.User.Create
                 
                 if (_userRepository.GetUsers().Count().Equals(0))
                 {
-                    var roleAdmin = await CreateRoleForUser("Admin", "Administrator of system");
-                    user.RoleId = roleAdmin.Id;
-                    await _userRepository.CreateUser(user, roleAdmin.Name);
-                } else
-                {
-                    var roleUser = await CreateRoleForUser("User", "User of system");
-                    user.RoleId = roleUser.Id;
-                    await _userRepository.CreateUser(user, roleUser.Name);
+                    var role = await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "Admin", Description = "Admin of System" });
+                    await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "User", Description = "User of System" });
+                    
+                    var response = await _userRepository.CreateUser(user, role);
+                    return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName};
                 }
-                
-                return new CreateUserCommandResponse();
+                else
+                {
+                    var role = await _roleRepository.GetRoleByName("User");
+                    var response = await _userRepository.CreateUser(user, role);
+
+                    return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName };
+                }
             }
             catch (System.Exception ex)
             {
@@ -47,10 +49,6 @@ namespace MargunStore.Domain.Commands.v1.User.Create
             }
         }
 
-        private async Task<CrossCutting.Configuration.Entities.Role> CreateRoleForUser(string roleName, string roleDescription)
-        {
-            await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = roleName, Description = roleDescription });
-            return await _roleRepository.GetRoleByName(roleName);
-        }
+        
     }
 }

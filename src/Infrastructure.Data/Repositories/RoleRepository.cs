@@ -10,11 +10,15 @@ namespace MargunStore.Infrastructure.Data.Repositories
     {
         private RoleManager<Role> _roleManager;
 
-        public RoleRepository(RoleManager<Role> roleManager) => _roleManager = roleManager; 
-
-        public async Task CreateRole(Role role) => await _roleManager.CreateAsync(role);
+        public RoleRepository(RoleManager<Role> roleManager) => _roleManager = roleManager;
 
         public async Task<Role> GetRoleByName(string name) => await _roleManager.FindByNameAsync(name);
+
+        public async Task<Role> CreateRole(Role role)
+        {
+            await _roleManager.CreateAsync(role);
+            return await _roleManager.FindByNameAsync(role.Name);
+        }
 
         public async Task UpdateRole(Role role)
         {

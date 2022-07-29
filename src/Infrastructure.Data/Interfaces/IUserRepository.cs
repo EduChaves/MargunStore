@@ -6,7 +6,7 @@ namespace MargunStore.Infrastructure.Data.Interfaces
 {
     public interface IUserRepository
     {
-        Task CreateUser(User user, string role);
+        Task<User> CreateUser(User user, Role role);
         IQueryable<User> GetUsers();
     }
 }

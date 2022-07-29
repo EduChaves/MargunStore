@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MargunStore.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220705230208_iniDbSettings")]
-    partial class iniDbSettings
+    [Migration("20220729024535_confgdb")]
+    partial class confgdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,11 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Active")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("Cep")
                         .HasColumnType("INT");
@@ -60,7 +65,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Bag", b =>
@@ -70,6 +75,11 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Active")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -78,7 +88,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Bag");
+                    b.ToTable("Bags");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Category", b =>
@@ -100,7 +110,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Client", b =>
@@ -111,7 +121,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("BIT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("BagId")
                         .HasColumnType("int");
@@ -135,7 +147,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Client");
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Product", b =>
@@ -146,7 +158,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
 
                     b.Property<int?>("BagId")
                         .HasColumnType("int");
@@ -191,6 +205,11 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Active")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -207,7 +226,13 @@ namespace MargunStore.Infrastructure.Data.Migrations
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Active")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -234,7 +259,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Sale", b =>
@@ -264,7 +289,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.HasIndex("BagId")
                         .IsUnique();
 
-                    b.ToTable("Sale");
+                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.User", b =>
@@ -275,6 +300,11 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Active")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -315,10 +345,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RoleId1")
+                    b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
@@ -341,9 +368,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("RoleId1");
+                    b.HasIndex("RoleId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -525,7 +552,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 {
                     b.HasOne("MargunStore.CrossCutting.Configuration.Entities.Role", "Role")
                         .WithMany()
-                        .HasForeignKey("RoleId1");
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });

@@ -15,8 +15,6 @@ namespace MargunStore.Infrastructure.Data.Settings
             builder.Property(value => value.Complement).HasColumnType("VARCHAR(30)").IsRequired();
             builder.Property(value => value.Cep).HasColumnType("INT").IsRequired();
             builder.Property(value => value.Active).HasColumnType("BIT").HasDefaultValue(1);
-
-            builder.ToTable("Address");
         }
     }
 }

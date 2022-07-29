@@ -10,7 +10,6 @@ namespace MargunStore.Infrastructure.Data.Settings
         {
             builder.Property(value => value.Name).HasColumnType("VARCHAR(50)").IsRequired().HasMaxLength(50);
             builder.Property(value => value.Active).HasColumnType("BIT").HasDefaultValue(1);
-            builder.ToTable("Category");
         }
     }
 }

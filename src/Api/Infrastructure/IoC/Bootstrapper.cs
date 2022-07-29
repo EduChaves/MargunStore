@@ -6,15 +6,12 @@ using MargunStore.Domain.Commands.v1.Category.Update;
 using MargunStore.Domain.Commands.v1.Product.Create;
 using MargunStore.Domain.Commands.v1.Product.Delete;
 using MargunStore.Domain.Commands.v1.Product.Update;
-using MargunStore.Domain.Commands.v1.Role.Create;
-using MargunStore.Domain.Commands.v1.Role.Update;
 using MargunStore.Domain.Commands.v1.User.Create;
 using MargunStore.Domain.MapperProfile;
 using MargunStore.Infrastructure.Data;
 using MargunStore.Infrastructure.Data.Interfaces;
 using MargunStore.Infrastructure.Data.Query.MapperProfile;
 using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
-using MargunStore.Infrastructure.Data.Query.Queries.v1.Product.GetProducts;
 using MargunStore.Infrastructure.Data.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -31,6 +28,11 @@ namespace MargunStore.Api.Infrastructure.IoC
         private readonly IConfiguration _configuration;
         private readonly IServiceCollection _services;
 
+        private Assembly DomainCommandAssembly = typeof(CreateCategoryCommandHadler).Assembly;
+        private Assembly InfrastructureQueryAssembly = typeof(GetCategoryQueryHandler).Assembly;
+        private Assembly MapperCommandProfileAssembly = typeof(CommandEntityProfile).Assembly;
+        private Assembly MapperQueryProfileAssemply = typeof(EntityQueryResponseProfile).Assembly;
+
         public Bootstrapper(IConfiguration configuration, IServiceCollection services)
         {
             _configuration = configuration;
@@ -41,28 +43,14 @@ namespace MargunStore.Api.Infrastructure.IoC
 
         private void Initialize()
         {
-            var handlerAssemblies = new Assembly[]
+            var assemblies = new Assembly[]
             {
-                typeof(CreateCategoryCommandHadler).Assembly,
-                typeof(UpdateCategoryCommandHandler).Assembly,
-                typeof(DeleteCategoryCommandHandler).Assembly,
-                typeof(CreateProductCommandHandler).Assembly,
-                typeof(UpdateProductCommandHandler).Assembly,
-                typeof(DeleteProductCommandHandler).Assembly,
-                typeof(CreateRoleCommandHandler).Assembly,
-                typeof(UpdateRoleCommandHandler).Assembly,
-                typeof(CreateUserCommandHandler).Assembly,
-
-                typeof(GetCategoryQueryHandler).Assembly,
-                typeof(GetProductQueryHandler).Assembly,
+               DomainCommandAssembly,
+               InfrastructureQueryAssembly,
+               MapperCommandProfileAssembly,
+               MapperQueryProfileAssemply
             };
-
-            var mapperAssemblies = new Assembly[]
-            {
-                typeof(CommandEntityProfile).Assembly,
-                typeof(EntityQueryResponseProfile).Assembly
-            };
-
+            
             _services.AddScoped<ICategoryRepository, CategoryRepository>();
             _services.AddScoped<IProductRepository, ProductRepository>();
             _services.AddScoped<IRoleRepository, RoleRepository>();
@@ -77,8 +65,6 @@ namespace MargunStore.Api.Infrastructure.IoC
                 value.RegisterValidatorsFromAssemblyContaining<CreateProductCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<UpdateProductCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<DeleteProductCommandValidator>();
-                value.RegisterValidatorsFromAssemblyContaining<CreateRoleCommandValidator>();
-                value.RegisterValidatorsFromAssemblyContaining<UpdateRoleCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
             });
           
@@ -87,8 +73,8 @@ namespace MargunStore.Api.Infrastructure.IoC
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
             
-            _services.AddAutoMapper(mapperAssemblies);
-            _services.AddMediatR(handlerAssemblies);
+            _services.AddAutoMapper(assemblies);
+            _services.AddMediatR(assemblies);
             
             IdentityInitialize();
         }

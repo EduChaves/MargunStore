@@ -10,25 +10,24 @@ namespace MargunStore.Infrastructure.Data.Repositories
     
     public class UserRepository : IUserRepository
     {
-        private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-        public UserRepository(UserManager<User> manager, SignInManager<User> signInManager)
-        {
-            _userManager = manager;
-            _signInManager = signInManager;
-        }
+        public UserRepository(SignInManager<User> signInManager) => _signInManager = signInManager;
 
-        public IQueryable<User> GetUsers() => _userManager.Users.Where(value => value.Active.Equals(true));
+        public IQueryable<User> GetUsers() => _signInManager.UserManager.Users.Where(value => value.Active.Equals(true));
 
-        public async Task CreateUser(User user, string role)
+        public async Task<User> CreateUser(User user, Role role)
         {
-            var response = await _userManager.CreateAsync(user);
+            user.RoleId = role.Id;
+            var response = await _signInManager.UserManager.CreateAsync(user);
                         
             if (!response.Succeeded)
                 throw new UserException(response.Errors.First().Description, null);
 
-            await _userManager.AddToRoleAsync(user, role);
+            await _signInManager.UserManager.AddToRoleAsync(user, role.Name);
+            await _signInManager.SignInAsync(user, false);
+
+            return await _signInManager.UserManager.FindByNameAsync(user.UserName);
         }
     }
 }

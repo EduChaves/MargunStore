@@ -1,6 +1,7 @@
 ﻿using MargunStore.CrossCutting.Configuration.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace MargunStore.Infrastructure.Data.Settings
 {
@@ -13,7 +14,7 @@ namespace MargunStore.Infrastructure.Data.Settings
             builder.Property(value => value.Description).HasColumnType("VARCHAR(100)").IsRequired().HasMaxLength(100);
             builder.Property(value => value.Active).HasColumnType("BIT").HasDefaultValue(1);
 
-            builder.ToTable("Role");
+            builder.ToTable("Roles");
         }
     }
 }

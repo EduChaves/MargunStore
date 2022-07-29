@@ -14,7 +14,7 @@ namespace MargunStore.Infrastructure.Data.Settings
             builder.Property(value => value.Value).HasColumnType("NUMERIC(38,2)").IsRequired();
             builder.Property(value => value.Active).HasColumnType("BIT").HasDefaultValue(1);
 
-            builder.ToTable("Product");
+            builder.ToTable("Products");
         }
     }
 }

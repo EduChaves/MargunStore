@@ -7,7 +7,7 @@ namespace MargunStore.Infrastructure.Data.Interfaces
     public interface IRoleRepository
     {
         Task<Role> GetRoleByName(string name);
-        Task CreateRole(Role role);
+        Task<Role> CreateRole(Role role);
         Task UpdateRole(Role role);
     }
 }

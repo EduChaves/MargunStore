@@ -63,7 +63,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Bag", b =>
@@ -86,7 +86,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Bag");
+                    b.ToTable("Bags");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Category", b =>
@@ -108,7 +108,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Client", b =>
@@ -145,7 +145,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Client");
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Product", b =>
@@ -193,7 +193,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.ProductImages", b =>
@@ -257,7 +257,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Sale", b =>
@@ -287,7 +287,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     b.HasIndex("BagId")
                         .IsUnique();
 
-                    b.ToTable("Sale");
+                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.User", b =>
@@ -368,7 +368,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
