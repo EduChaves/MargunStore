@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace MargunStore.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]/v1")]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -1,1 +1,62 @@
-<p>create-product works!</p>
+<div>
+    <form [formGroup]="form">
+        <mat-card class="CardSizeSetting">
+            <mat-card-header>
+                <mat-card-title>
+                    <h1>Cadastro de Produtos</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div style="width: 50%; background-color: red;">
+<h1>teste</h1>
+                </div>
+                <div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput formControlName="name" placeholder="Nome do Produto" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Descrição</mat-label>
+                            <input type="text" matInput formControlName="description" placeholder="Descrição do Produto" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Tamanho</mat-label>
+                            <input type="text" matInput formControlName="length" placeholder="Tamanho do Produto" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Valor</mat-label>
+                            <input type="number" matInput formControlName="value" placeholder="Valor do Produto" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Quantidade</mat-label>
+                            <input type="text" matInput formControlName="quantity" placeholder="Quantidade de Produtos" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Categoria</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="PositionButtons">
+                    <button type="submit" mat-stroked-button color="primary">Salvar</button>
+                    <button type="button" mat-stroked-button>Voltar</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<div>
+    <h1>Cadastro de Categorias</h1>
+    <form [formGroup]="form">
+        <mat-card class="CardStyleSetting">
+            <mat-card-title>Categoria</mat-card-title>
+            <mat-card-content>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Categoria</mat-label>
+                        <input type="text" matInput formControlName="name" placeholder="Nome da Categoria" required>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div>
+                    <button type="submit" mat-stroked-button color="primary">Salvar</button>
+                    <button type="button" mat-stroked-button>Voltar</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+
+    </form>
+</div>
