@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/Models/Category';
-import { ProductImage } from 'src/app/Models/ProductImage';
+import { Image } from 'src/app/Models/Image';
 import { CategoryService } from 'src/app/Services/category.service';
-import { ProductImagesService } from 'src/app/Services/product-images.service';
+import { ImageService } from 'src/app/Services/image.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -15,16 +15,16 @@ export class CreateProductComponent implements OnInit {
   form!: FormGroup;
   errors: string[] = [];
   categories!: Category[];
-  images!: ProductImage[];
+  images!: Image[];
 
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
-    private productImagesService: ProductImagesService) { }
+    private imageService: ImageService) { }
 
   ngOnInit(): void {
-    this.categoryService.GetCategoriesRequest().subscribe(response => 
-      response.forEach(value => this.categories.push(value)));
+    // this.categoryService.GetCategoriesRequest().subscribe(response => 
+    //   response.forEach(value => this.categories.push(value)));
 
     this.form = new FormGroup({
       name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
@@ -45,7 +45,7 @@ export class CreateProductComponent implements OnInit {
 
   CreateProductImages(){
     const request = this.images;
-    this.productImagesService.CreateProductImagesRequest(request).subscribe(response => console.log('Insert'),
+    this.imageService.CreateProductImagesRequest(request).subscribe(response => console.log('Insert'),
       error => error.forEach((value: string) => this.errors.push(value)));
   }
 }

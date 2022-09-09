@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductImage } from '../Models/ProductImage';
+import { Image } from '../Models/Image';
 
 const options = {
   headers: new HttpHeaders()
@@ -12,16 +12,16 @@ const options = {
   providedIn: 'root'
 })
 
-export class ProductImagesService {
+export class ImageService {
   url = '/api/productimages/v1/';
 
   constructor(private http: HttpClient) { }
 
-  CreateProductImagesRequest(request: ProductImage[]): Observable<any>{
+  CreateProductImagesRequest(request: Image[]): Observable<any>{
     return this.http.post<any>(this.url, request, options);
   }
 
-  GetProductImagesRequest(): Observable<ProductImage[]>{
-    return this.http.get<ProductImage[]>(this.url);
+  GetProductImagesRequest(): Observable<Image[]>{
+    return this.http.get<Image[]>(this.url);
   }
 }

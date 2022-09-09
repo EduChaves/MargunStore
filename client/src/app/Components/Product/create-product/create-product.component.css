@@ -1,0 +1,17 @@
+.CardSizeSetting{
+    width: 65%;
+}
+.mat-form-field.mat-form-field{
+    width: 400px;
+}
+.PositionButtons{
+    display: flex;
+    justify-content: end;
+}
+.Image{
+    border-width: 1px;
+    border-color: #bdc3c7;
+    height: 300px;
+    width: 350px;
+    padding-right: 50px;
+}

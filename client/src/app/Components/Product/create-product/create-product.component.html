@@ -7,10 +7,23 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <div style="width: 50%; background-color: red;">
-<h1>teste</h1>
+                <div fxLayout="row" fxLayoutGap="30px">
+                    <div fxFlex="40">
+                        <div fxLayout="column">
+                            <div class="Image">
+                               <img src="#" hidden id="image" width="350" height="300"> 
+                            </div>
+                            <div fxLayoutAlign="center end">
+                                <input type="file" hidden #fileInput name="img">
+                            
+                                <br><br><br><br>
+
+                                <button type="button" mat-stroked-button color="primary">Escolha uma Imagem</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
+                <div fxFlex="60" style="margin-left: 5%;">
                     <div>
                         <mat-form-field>
                             <mat-label>Nome</mat-label>

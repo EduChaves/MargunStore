@@ -1,5 +1,5 @@
 import { Category } from "./Category";
-import { ProductImage } from "./ProductImage";
+import { Image } from "./Image";
 
 export class Product{
     id!: number;
@@ -11,5 +11,5 @@ export class Product{
     active!: boolean;
     categoryId!: number;
     category!: Category;
-    images!: ProductImage[];
+    images!: Image[];
 }
