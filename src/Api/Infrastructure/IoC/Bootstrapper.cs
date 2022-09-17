@@ -14,6 +14,8 @@ using MargunStore.Infrastructure.Data.Query.MapperProfile;
 using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
 using MargunStore.Infrastructure.Data.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +29,7 @@ namespace MargunStore.Api.Infrastructure.IoC
     {
         private readonly IConfiguration _configuration;
         private readonly IServiceCollection _services;
+        private readonly string _originName = "WebPageMargun";
 
         private Assembly DomainCommandAssembly = typeof(CreateCategoryCommandHadler).Assembly;
         private Assembly InfrastructureQueryAssembly = typeof(GetCategoryQueryHandler).Assembly;
@@ -76,6 +79,7 @@ namespace MargunStore.Api.Infrastructure.IoC
             _services.AddAutoMapper(assemblies);
             _services.AddMediatR(assemblies);
             
+            ConfigureCORS();
             IdentityInitialize();
         }
 
@@ -94,6 +98,25 @@ namespace MargunStore.Api.Infrastructure.IoC
             builder.AddEntityFrameworkStores<Context>();
             builder.AddSignInManager<SignInManager<User>>();
             builder.AddRoleManager<RoleManager<Role>>();
+        }
+
+        private void ConfigureCORS()
+        {
+            _services.AddCors(options => 
+                options.AddPolicy(name: _originName, policy => 
+                    policy.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()));
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseRouting();
+            app.UseCors(_originName);
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+                endpoints.MapControllers()
+            );
         }
     }
 }

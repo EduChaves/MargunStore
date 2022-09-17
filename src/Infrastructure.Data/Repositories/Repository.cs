@@ -16,8 +16,17 @@ namespace MargunStore.Infrastructure.Data.Repositories
 
         public async Task Add(TEntity entity)
         {
-            await _context.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.AddAsync(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
         public async Task Update(TEntity entity)

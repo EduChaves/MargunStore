@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="SubmitForm()">
         <mat-card class="CardSizeSetting">
             <mat-card-header>
                 <mat-card-title>
@@ -9,16 +9,18 @@
             <mat-card-content>
                 <div fxLayout="row" fxLayoutGap="30px">
                     <div fxFlex="40">
-                        <div fxLayout="column">
+                        <div fxLayout="column" style="width: 250%;">
                             <div class="Image">
                                <img src="#" hidden id="image" width="350" height="300"> 
                             </div>
                             <div fxLayoutAlign="center end">
-                                <input type="file" hidden #fileInput name="img">
+                                <input type="file" hidden #fileInput name="img" formControlName="images" (change)="SelectImage($event)">
                             
                                 <br><br><br><br>
 
-                                <button type="button" mat-stroked-button color="primary">Escolha uma Imagem</button>
+                                <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
+                                    Escolha uma Imagem
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -27,46 +29,82 @@
                     <div>
                         <mat-form-field>
                             <mat-label>Nome</mat-label>
-                            <input type="text" matInput formControlName="name" placeholder="Nome do Produto" required>
+                            <input type="text" matInput formControlName="name" placeholder="Nome do Produto" required minlength="3" maxlength="20">
+                            <mat-error *ngIf="Controls.name.invalid && Controls.name.touched">
+                                <sup>*</sup>Campo inválido
+                            </mat-error>
+                            <mat-error *ngIf="Controls.name.invalid && Controls.name.errors?.minlength">
+                                <sup>*</sup>Digite mais caracteres
+                            </mat-error>
+                            <mat-error *ngIf="Controls.name.invalid && Controls.name.errors?.maxlength">
+                                <sup>*</sup>Digite menos caracteres
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Descrição</mat-label>
-                            <input type="text" matInput formControlName="description" placeholder="Descrição do Produto" required>
+                            <input type="text" matInput formControlName="description" placeholder="Descrição do Produto" required minlength="5" maxlength="30">
+                            <mat-error *ngIf="Controls.description.invalid && Controls.description.touched">
+                                <sup>*</sup>Campo inválido
+                            </mat-error>
+                            <mat-error *ngIf="Controls.description.invalid && Controls.description.errors?.minlength">
+                                <sup>*</sup>Digite mais caracteres
+                            </mat-error>
+                            <mat-error *ngIf="Controls.description.invalid && Controls.description.errors?.maxlength">
+                                <sup>*</sup>Digite menos caracteres
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Tamanho</mat-label>
-                            <input type="text" matInput formControlName="length" placeholder="Tamanho do Produto" required>
+                            <input type="text" matInput formControlName="length" placeholder="Tamanho do Produto" required minlength="1" maxlength="10">
+                            <mat-error *ngIf="Controls.length.invalid && Controls.length.touched">
+                                <sup>*</sup>Campo inválido
+                            </mat-error>
+                            <mat-error *ngIf="Controls.length.invalid && Controls.length.errors?.minlength">
+                                <sup>*</sup>Digite mais caracteres
+                            </mat-error>
+                            <mat-error *ngIf="Controls.length.invalid && Controls.length.errors?.maxlength">
+                                <sup>*</sup>Digite menos caracteres
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Valor</mat-label>
                             <input type="number" matInput formControlName="value" placeholder="Valor do Produto" required>
+                            <mat-error *ngIf="Controls.value.invalid && Controls.value.touched">
+                                <sup>*</sup>Campo inválido
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Quantidade</mat-label>
-                            <input type="text" matInput formControlName="quantity" placeholder="Quantidade de Produtos" required>
+                            <input type="number" matInput formControlName="quantity" placeholder="Quantidade de Produtos" required>
+                            <mat-error *ngIf="Controls.quantity.invalid && Controls.quantity.touched">
+                                <sup>*</sup>Campo inválido
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Categoria</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+                            <mat-select formControlName="category" required>
+                                <mat-option *ngFor="let category of categories" [value]="category">{{ category.name }}</mat-option>
                             </mat-select>
+                            <mat-error *ngIf="Controls.name.invalid && Controls.name.touched">
+                                <sup>*</sup>Campo inválido
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
             </mat-card-content>
             <mat-card-actions>
                 <div class="PositionButtons">
-                    <button type="submit" mat-stroked-button color="primary">Salvar</button>
+                    <button type="submit" mat-stroked-button color="primary" [disabled]="form.invalid">Salvar</button>
                     <button type="button" mat-stroked-button>Voltar</button>
                 </div>
             </mat-card-actions>

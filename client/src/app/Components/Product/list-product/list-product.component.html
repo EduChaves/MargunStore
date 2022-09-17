@@ -1,0 +1,18 @@
+<div class="AlingProducts">
+    <div *ngFor="let product of listProducts">
+        <div class="SpaceCards">
+            <mat-card>
+                <mat-card-content>
+                    <img [src]="product.images[0].image" mat-card-image width="200" height="200">
+                    <h3>{{product.name}}</h3>
+                    <span>{{product.description}}</span>
+                    <br>
+                    <span>R${{product.value}},00</span>
+                </mat-card-content>
+                <mat-card-actions>
+                        <button type="button" class="ButtonSize" mat-stroked-button [routerLink]="['/product/detail-product', product.id]">Detalhes</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -11,5 +11,5 @@ export class Product{
     active!: boolean;
     categoryId!: number;
     category!: Category;
-    images!: Image[];
+    images: Image[] = [];
 }

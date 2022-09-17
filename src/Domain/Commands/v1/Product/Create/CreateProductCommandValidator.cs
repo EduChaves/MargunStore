@@ -47,9 +47,7 @@ namespace MargunStore.Domain.Commands.v1.Product.Create
                     .WithMessage("O campo length é Obrigatório")
                 .NotNull()
                     .WithMessage("O campo length é Obrigatório")
-                .MinimumLength(3)
-                    .WithMessage("Entre com mais caracteres")
-                .MaximumLength(50)
+                .MaximumLength(15)
                     .WithMessage("Entre com menos caracteres");
         }
     }

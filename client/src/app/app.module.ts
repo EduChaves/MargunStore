@@ -13,13 +13,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 import { CreateProductComponent } from './Components/Product/create-product/create-product.component';
+import { ListProductComponent } from './Components/Product/list-product/list-product.component';
+import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { DetailProductComponent } from './Components/Product/detail-product/detail-product.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    ListProductComponent,
+    DashboardComponent,
+    DetailProductComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,9 @@ import { CreateProductComponent } from './Components/Product/create-product/crea
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
-    MatOptionModule
+    MatOptionModule,
+    MatSnackBarModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
