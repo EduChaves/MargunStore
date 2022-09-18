@@ -1,25 +1,33 @@
 <div>
     <div fxLayout="row" fxLayoutGap="30px">
         <div fxFlex="40">
-            <div>
-                <img [src]="image" width="400" height="400">
+            <div class="DivImageSetting">
+                <img class="ImageSetting" [src]="image" width="500" height="500">
             </div>
         </div>
         <div fxFlex="60">
-            <div>
-                <h2>{{ product.name }}</h2>
-                <br>
-                <span>Descrição: {{ product.description }}</span>
-                <br><br>
-                <span>Categoria: {{ product.category.name }}</span>
-                <br><br>
-                <span>Tamanho: {{ product.length }}</span>
-                <br><br>
-                <span>Quantidade: {{ product.quantity }}</span>
-                <br><br>
-                <span>Valor: R${{ product.value }},00</span>
-                <br><br>
-                <button type="button" mat-stroked-button style="width: 60%">Carrinho</button>
+            <div class="LabalsSetting">
+                <div class="DivAlign">
+                    <h2>{{ product.name }}</h2>
+                    <br>
+                    <span>Descrição: {{ product.description }}</span>
+                    <br><br>
+                    <span>Categoria: {{ product.category.name }}</span>
+                    <br><br>
+                    <span>Tamanho: {{ product.length }}</span>
+                    <br><br>
+                    <span>Quantidade: {{ product.quantity }}</span>
+                    <br><br>
+                    <span>Valor: R${{ product.value }},00</span>
+                    <br><br>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <span>Calculo de Frete:</span>
+                    <br><br>
+                    <div class="ButtonAlign">
+                        <button class="ButtonSize" type="button" mat-stroked-button>Carrinho</button>
+                    </div>
+                </div>    
             </div>
         </div>
     </div>

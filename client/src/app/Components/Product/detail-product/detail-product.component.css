@@ -1,0 +1,30 @@
+.LayoutSettig{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.ImageSetting{
+    border-radius: 5%;
+}
+.DivImageSetting{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.LabalsSetting{
+    margin-top: 5%;
+    width: 50%;
+    margin-left: 0%;
+    background: #f5f5f5;
+    border-radius: 5%;
+}
+.DivAlign{
+    padding: 10%;
+}
+.ButtonAlign{
+    display: flex;
+    justify-content: center;
+}
+.ButtonSize{
+    width: 100%;
+}

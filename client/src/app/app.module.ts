@@ -19,6 +19,7 @@ import { CreateProductComponent } from './Components/Product/create-product/crea
 import { ListProductComponent } from './Components/Product/list-product/list-product.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 import { DetailProductComponent } from './Components/Product/detail-product/detail-product.component'
 
 @NgModule({
@@ -45,6 +46,7 @@ import { DetailProductComponent } from './Components/Product/detail-product/deta
     MatOptionModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
