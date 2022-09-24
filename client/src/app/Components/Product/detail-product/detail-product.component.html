@@ -1,5 +1,5 @@
 <div>
-    <div fxLayout="row" fxLayoutGap="30px">
+    <div fxLayout="row" fxLayoutGap="4px">
         <div fxFlex="40">
             <div class="DivImageSetting">
                 <img class="ImageSetting" [src]="image" width="500" height="500">
@@ -16,16 +16,10 @@
                     <br><br>
                     <span>Tamanho: {{ product.length }}</span>
                     <br><br>
-                    <span>Quantidade: {{ product.quantity }}</span>
-                    <br><br>
                     <span>Valor: R${{ product.value }},00</span>
                     <br><br>
-                    <mat-divider></mat-divider>
-                    <br>
-                    <span>Calculo de Frete:</span>
-                    <br><br>
                     <div class="ButtonAlign">
-                        <button class="ButtonSize" type="button" mat-stroked-button>Carrinho</button>
+                        <button class="ButtonSize" type="button" mat-stroked-button>Adicionar ao Carrinho</button>
                     </div>
                 </div>    
             </div>

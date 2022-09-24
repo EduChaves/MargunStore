@@ -10,7 +10,6 @@ namespace MargunStore.Infrastructure.Data.Settings
         {
             builder.Property(value => value.SaleDate).HasColumnType("DATETIME").IsRequired();
             builder.Property(value => value.Payment).HasColumnType("VARCHAR(50)").IsRequired();
-            builder.HasOne(value => value.Bag).WithOne(value => value.Sale).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

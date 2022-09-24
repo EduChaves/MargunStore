@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MargunStore.Infrastructure.Data.Migrations
 {
-    public partial class confgdb : Migration
+    public partial class dbSetting : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
                     TotalVale = table.Column<double>(type: "float", nullable: false),
                     Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
                 },
@@ -53,35 +53,46 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Clients",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
-                    Length = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false),
-                    Value = table.Column<decimal>(type: "NUMERIC(38,2)", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    BagId = table.Column<int>(type: "int", nullable: true)
+                    Cpf = table.Column<string>(type: "VARCHAR(11)", maxLength: 11, nullable: false),
+                    BagId = table.Column<int>(type: "int", nullable: true),
+                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Clients", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Bags_BagId",
+                        name: "FK_Clients_Bags_BagId",
                         column: x => x.BagId,
                         principalTable: "Bags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemBags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
+                    BagId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemBags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        name: "FK_ItemBags_Bags_BagId",
+                        column: x => x.BagId,
+                        principalTable: "Bags",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,12 +117,61 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Addresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Stret = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    Number = table.Column<int>(type: "INT", nullable: false),
+                    District = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "VARCHAR(30)", maxLength: 30, nullable: false),
+                    Complement = table.Column<string>(type: "VARCHAR(30)", nullable: false),
+                    Cep = table.Column<int>(type: "INT", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
+                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Addresses_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sales",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
+                    SaleDate = table.Column<DateTime>(type: "DATETIME", nullable: false),
+                    Payment = table.Column<string>(type: "VARCHAR(50)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sales", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sales_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Password = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
                     Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -132,6 +192,12 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Users_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
@@ -140,24 +206,35 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductImages",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
+                    Name = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    Length = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false),
+                    Value = table.Column<decimal>(type: "NUMERIC(38,2)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ItemBagId = table.Column<int>(type: "int", nullable: true),
+                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductImages", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductImages_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Products_ItemBags_ItemBagId",
+                        column: x => x.ItemBagId,
+                        principalTable: "ItemBags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -246,85 +323,24 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clients",
+                name: "ProductImages",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
-                    Cpf = table.Column<string>(type: "VARCHAR(11)", maxLength: 11, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    BagId = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
                     Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
+                    table.PrimaryKey("PK_ProductImages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Clients_Bags_BagId",
-                        column: x => x.BagId,
-                        principalTable: "Bags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Clients_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_ProductImages_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Stret = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
-                    Number = table.Column<int>(type: "INT", nullable: false),
-                    District = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
-                    State = table.Column<string>(type: "VARCHAR(30)", maxLength: 30, nullable: false),
-                    Complement = table.Column<string>(type: "VARCHAR(30)", nullable: false),
-                    Cep = table.Column<int>(type: "INT", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false),
-                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Clients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sales",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BagId = table.Column<int>(type: "int", nullable: false),
-                    SaleDate = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: false),
-                    Payment = table.Column<string>(type: "VARCHAR(50)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sales", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Sales_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Sales_Bags_BagId",
-                        column: x => x.BagId,
-                        principalTable: "Bags",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -358,9 +374,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 column: "BagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clients_UserId",
-                table: "Clients",
-                column: "UserId");
+                name: "IX_ItemBags_BagId",
+                table: "ItemBags",
+                column: "BagId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductImages_ProductId",
@@ -368,14 +384,14 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_BagId",
-                table: "Products",
-                column: "BagId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_ItemBagId",
+                table: "Products",
+                column: "ItemBagId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -385,20 +401,19 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sales_AddressId",
+                name: "IX_Sales_ClientId",
                 table: "Sales",
-                column: "AddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sales_BagId",
-                table: "Sales",
-                column: "BagId",
-                unique: true);
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "Users",
                 column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_ClientId",
+                table: "Users",
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
@@ -415,6 +430,9 @@ namespace MargunStore.Infrastructure.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Addresses");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -437,25 +455,25 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 name: "Sales");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Addresses");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Clients");
 
             migrationBuilder.DropTable(
-                name: "Bags");
-
-            migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "ItemBags");
+
+            migrationBuilder.DropTable(
+                name: "Bags");
         }
     }
 }

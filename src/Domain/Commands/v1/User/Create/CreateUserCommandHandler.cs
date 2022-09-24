@@ -23,32 +23,22 @@ namespace MargunStore.Domain.Commands.v1.User.Create
 
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                var user = _mapper.Map<CrossCutting.Configuration.Entities.User>(request);
-                
-                if (_userRepository.GetUsers().Count().Equals(0))
-                {
-                    var role = await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "Admin", Description = "Admin of System" });
-                    await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "User", Description = "User of System" });
-                    
-                    var response = await _userRepository.CreateUser(user, role);
-                    return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName};
-                }
-                else
-                {
-                    var role = await _roleRepository.GetRoleByName("User");
-                    var response = await _userRepository.CreateUser(user, role);
+            var user = _mapper.Map<CrossCutting.Configuration.Entities.User>(request);
 
-                    return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName };
-                }
-            }
-            catch (System.Exception ex)
+            if (!_userRepository.GetUsers().Any() && user.Client == null)
             {
-                throw new UserException(ex.Message, ex);
+                user.Role = await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "Admin", Description = "Admin of System" });
+                await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "User", Description = "User of System" });
+
+                var response = await _userRepository.CreateUser(user);
+                return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName };
+            }
+            else
+            {
+                var response = await _userRepository.CreateUser(user);
+
+                return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName };
             }
         }
-
-        
     }
 }

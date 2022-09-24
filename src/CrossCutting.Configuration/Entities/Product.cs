@@ -9,8 +9,8 @@ namespace MargunStore.CrossCutting.Configuration.Entities
         public string Length { get; set; }
         public decimal Value { get; set; }
         public int Quantity { get; set; }
+        public ItemBag ItemBag { get; set; }
         public bool Active { get; set; }
-        public int CategoryId { get; set; }
         public Category Category { get; set; }
         public virtual IEnumerable<ProductImages> Images { get; set; }
     }

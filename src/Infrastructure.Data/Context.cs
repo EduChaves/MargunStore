@@ -13,6 +13,7 @@ namespace MargunStore.Infrastructure.Data
         public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Sale> Sales { get; set; }
+        public DbSet<ItemBag> ItemBags { get; set; }
         public DbSet<ProductImages> ProductImages { get; set; }
 
         public Context(DbContextOptions options) : base(options) {}
@@ -28,6 +29,7 @@ namespace MargunStore.Infrastructure.Data
             builder.ApplyConfiguration(new RoleMap());
             builder.ApplyConfiguration(new SaleMap());
             builder.ApplyConfiguration(new UserMap());
+            builder.ApplyConfiguration(new ItemBagMap());
             builder.ApplyConfiguration(new ProductImageMap());
         }
     }

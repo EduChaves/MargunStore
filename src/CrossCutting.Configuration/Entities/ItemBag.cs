@@ -2,11 +2,10 @@
 
 namespace MargunStore.CrossCutting.Configuration.Entities
 {
-    public class Bag : EntityBase
+    public class ItemBag : EntityBase
     {
         public int Quantity { get; set; }
-        public double TotalVale { get; set; }
         public bool Active { get; set; }
-        public virtual IEnumerable<ItemBag> ItemsBag { get; set; }
+        public virtual IEnumerable<Product> Products { get; set; }
     }
 }

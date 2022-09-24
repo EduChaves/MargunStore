@@ -58,6 +58,7 @@ namespace MargunStore.Api.Infrastructure.IoC
             _services.AddScoped<IProductRepository, ProductRepository>();
             _services.AddScoped<IRoleRepository, RoleRepository>();
             _services.AddScoped<IUserRepository, UserRepository>();
+            _services.AddScoped<IClientRepository, ClientRepository>();
 
             _services.AddDbContext<Context>(value => value.UseSqlServer(_configuration.GetConnectionString("DatabaseConnection")).EnableSensitiveDataLogging());
             _services.AddControllers().AddFluentValidation(value => 
