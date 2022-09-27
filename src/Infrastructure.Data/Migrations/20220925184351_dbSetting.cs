@@ -343,6 +343,16 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
+                values: new object[] { "acce3a11-c79e-43fe-acbe-b75f40ffc744", "ed9c2eef-a643-4a12-ad9a-b2cb8e94cba1", "Administrator of sistem", "admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
+                values: new object[] { "ccf99cdf-87b3-4656-848a-115b8c4d5577", "45517cea-b927-4842-9a2c-ec6d4454e7cd", "User of sistem", "user", "USER" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_ClientId",
                 table: "Addresses",

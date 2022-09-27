@@ -26,11 +26,11 @@ namespace MargunStore.Infrastructure.Data.Query.Queries.v1.Product.GetProducts
             {
                 if (request.Id.HasValue)
                 {
-                    var entity = await _repository.GetEntity(request.Id.Value).ToListAsync();
+                    var entity = await _repository.GetEntities(request.Id.Value).ToListAsync();
                     return _mapper.Map<IEnumerable<GetProductQueryResponse>>(entity);
                 }
 
-                var entityList = await _repository.GetEntity().ToListAsync();
+                var entityList = await _repository.GetEntities().ToListAsync();
                 return _mapper.Map<IEnumerable<GetProductQueryResponse>>(entityList);
             }
             catch (System.Exception ex)

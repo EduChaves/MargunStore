@@ -1,5 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
 using MargunStore.CrossCutting.Configuration.Entities;
+using MargunStore.CrossCutting.Configuration.Settings.JWT;
 using MargunStore.Domain.Commands.v1.Category.Create;
 using MargunStore.Domain.Commands.v1.Category.Delete;
 using MargunStore.Domain.Commands.v1.Category.Update;
@@ -14,14 +15,17 @@ using MargunStore.Infrastructure.Data.Query.MapperProfile;
 using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
 using MargunStore.Infrastructure.Data.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Text;
 
 namespace MargunStore.Api.Infrastructure.IoC
 {
@@ -71,15 +75,16 @@ namespace MargunStore.Api.Infrastructure.IoC
                 value.RegisterValidatorsFromAssemblyContaining<DeleteProductCommandValidator>();
                 value.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
             });
-          
+            
             _services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
-            
+
             _services.AddAutoMapper(assemblies);
             _services.AddMediatR(assemblies);
             
+            AuthenticationSetting();
             ConfigureCORS();
             IdentityInitialize();
         }
@@ -114,10 +119,31 @@ namespace MargunStore.Api.Infrastructure.IoC
         {
             app.UseRouting();
             app.UseCors(_originName);
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
                 endpoints.MapControllers()
             );
+        }
+
+        private void AuthenticationSetting()
+        {
+            _services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(value =>
+            {
+                value.RequireHttpsMetadata = false;
+                value.SaveToken = true;
+                value.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JwtSetting.JwtKey)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                };
+            });
         }
     }
 }

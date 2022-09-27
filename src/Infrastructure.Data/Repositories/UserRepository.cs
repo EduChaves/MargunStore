@@ -26,21 +26,42 @@ namespace MargunStore.Infrastructure.Data.Repositories
             try
             {
                 user.Role = await _roleManager.FindByNameAsync("User");
+                user.EmailConfirmed = true;
                 
-                var response = await _signInManager.UserManager.CreateAsync(user);
+                var response = await _signInManager.UserManager.CreateAsync(user, user.Password);
 
                 if (!response.Succeeded)
                     throw new UserException(response.Errors.First().Description, null);
 
+                await _signInManager.UserManager.SetLockoutEnabledAsync(user, false);
                 await _signInManager.UserManager.AddToRoleAsync(user, user.Role.Name);
-                await _signInManager.SignInAsync(user, false);
 
-                return await _signInManager.UserManager.FindByNameAsync(user.UserName);
+                return await SignIn(user.Email, user.Password);
             }
             catch (System.Exception ex)
             {
 
-                throw;
+                throw new UserException(ex.Message, ex);
+            }
+        }
+
+        public async Task<User> SignIn(string email, string password)
+        {
+            try
+            {
+                var user = await _signInManager.UserManager.FindByEmailAsync(email);
+                var passwordIsValid = await _signInManager.UserManager.CheckPasswordAsync(user, password);
+
+                if(passwordIsValid)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false, false);
+                    return result.Succeeded ? user: null;
+                }
+                return null;
+            }
+            catch (System.Exception ex)
+            {
+                throw new UserException(ex.Message, ex);
             }
         }
     }

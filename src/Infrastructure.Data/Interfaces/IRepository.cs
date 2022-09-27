@@ -8,7 +8,8 @@ namespace MargunStore.Infrastructure.Data.Interfaces
         Task Add(TEntity entity);
         Task Update(TEntity entity);
         Task Delete(TEntity entity);
-        IQueryable<TEntity> GetEntity();
-        IQueryable<TEntity> GetEntity(int id);
+        IQueryable<TEntity> GetEntities();
+        IQueryable<TEntity> GetEntities(int id);
+        TEntity GetEntity(int id);
     }
 }

@@ -281,6 +281,26 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "acce3a11-c79e-43fe-acbe-b75f40ffc744",
+                            Active = false,
+                            ConcurrencyStamp = "ed9c2eef-a643-4a12-ad9a-b2cb8e94cba1",
+                            Description = "Administrator of sistem",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "ccf99cdf-87b3-4656-848a-115b8c4d5577",
+                            Active = false,
+                            ConcurrencyStamp = "45517cea-b927-4842-9a2c-ec6d4454e7cd",
+                            Description = "User of sistem",
+                            Name = "user",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("MargunStore.CrossCutting.Configuration.Entities.Sale", b =>

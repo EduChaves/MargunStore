@@ -8,9 +8,10 @@ namespace MargunStore.Infrastructure.Data.Repositories
     {
         private readonly Context _context;
 
-        public virtual IQueryable<TEntity> GetEntity() => _context.Set<TEntity>();
+        public virtual IQueryable<TEntity> GetEntities() => _context.Set<TEntity>();
+        public virtual IQueryable<TEntity> GetEntities(int id) => _context.Set<TEntity>();
 
-        public virtual IQueryable<TEntity> GetEntity(int id) => _context.Set<TEntity>();
+        public virtual TEntity GetEntity(int id) => null;
 
         public Repository(Context context) => _context = context;
 

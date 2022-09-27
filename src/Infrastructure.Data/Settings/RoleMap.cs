@@ -14,6 +14,21 @@ namespace MargunStore.Infrastructure.Data.Settings
             builder.Property(value => value.Description).HasColumnType("VARCHAR(100)").IsRequired().HasMaxLength(100);
             builder.Property(value => value.Active).HasColumnType("BIT").HasDefaultValue(1);
 
+            builder.HasData(new Role { 
+                Id = Guid.NewGuid().ToString(), 
+                Name = "admin", 
+                NormalizedName = "ADMIN", 
+                Description = "Administrator of sistem" 
+            });
+
+            builder.HasData(new Role
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "user",
+                NormalizedName = "USER",
+                Description = "User of sistem"
+            });
+
             builder.ToTable("Roles");
         }
     }

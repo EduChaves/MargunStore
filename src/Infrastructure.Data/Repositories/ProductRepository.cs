@@ -14,7 +14,7 @@ namespace MargunStore.Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public override IQueryable<Product> GetEntity() => _context.Products.Include(value => value.Category).Include(value => value.Images);
-        public override IQueryable<Product> GetEntity(int id) => _context.Products.Include(value => value.Category).Include(value => value.Images).Where(value => value.Id.Equals(id));
+        public override IQueryable<Product> GetEntities() => _context.Products.Include(value => value.Category).Include(value => value.Images);
+        public override IQueryable<Product> GetEntities(int id) => _context.Products.Include(value => value.Category).Include(value => value.Images).Where(value => value.Id.Equals(id));
     }
 }

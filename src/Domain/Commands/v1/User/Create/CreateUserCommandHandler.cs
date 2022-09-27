@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using MargunStore.CrossCutting.Exception;
+using MargunStore.CrossCutting.Configuration.Settings.JWT;
+using MargunStore.CrossCutting.Configuration.Shared.Extensions;
 using MargunStore.Infrastructure.Data.Interfaces;
 using MediatR;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,22 +24,18 @@ namespace MargunStore.Domain.Commands.v1.User.Create
 
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = _mapper.Map<CrossCutting.Configuration.Entities.User>(request);
-
-            if (!_userRepository.GetUsers().Any() && user.Client == null)
+            if(ConfirmPassword(request.Password, request.ConfirmPassword))
             {
-                user.Role = await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "Admin", Description = "Admin of System" });
-                await _roleRepository.CreateRole(new CrossCutting.Configuration.Entities.Role { Name = "User", Description = "User of System" });
-
+                var user = _mapper.Map<CrossCutting.Configuration.Entities.User>(request);
                 var response = await _userRepository.CreateUser(user);
-                return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName };
-            }
-            else
-            {
-                var response = await _userRepository.CreateUser(user);
+                var token = JwtSetting.GenerateToken(user);
 
-                return new CreateUserCommandResponse { Id = response.Id, UserName = response.UserName };
+                return new CreateUserCommandResponse(new Data { Id = response.Id, UserName = response.UserName, Token = token});
             }
+            var nofitication = "";
+            return new CreateUserCommandResponse(new List<string>());
         }
+
+        private static bool ConfirmPassword(string password, string confirmPassword) => password.Equals(confirmPassword);
     }
 }

@@ -24,7 +24,7 @@ namespace MargunStore.Domain.Commands.v1.Product.Delete
         {
             try
             {
-                var product = await _repository.GetEntity(request.Id).FirstAsync();
+                var product = await _repository.GetEntities(request.Id).FirstAsync();
                 await _repository.Delete(product);
 
                 return new DeleteProductCommandResponse();
