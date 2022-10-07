@@ -1,4 +1,6 @@
-﻿using MargunStore.Infrastructure.Data.Interfaces;
+﻿using MargunStore.CrossCutting.Exception;
+using MargunStore.Infrastructure.Data.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,8 +26,7 @@ namespace MargunStore.Infrastructure.Data.Repositories
             }
             catch (System.Exception ex)
             {
-
-                throw ex;
+                throw new ProductException(ex.Message, ex);
             }
             
         }

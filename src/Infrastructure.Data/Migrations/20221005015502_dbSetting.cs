@@ -59,7 +59,6 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
-                    Cpf = table.Column<string>(type: "VARCHAR(11)", maxLength: 11, nullable: false),
                     BagId = table.Column<int>(type: "int", nullable: true),
                     Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
                 },
@@ -122,15 +121,15 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Stret = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    Street = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
                     Number = table.Column<int>(type: "INT", nullable: false),
                     District = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     State = table.Column<string>(type: "VARCHAR(30)", maxLength: 30, nullable: false),
                     Complement = table.Column<string>(type: "VARCHAR(30)", nullable: false),
-                    Cep = table.Column<int>(type: "INT", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: true),
-                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
+                    Cep = table.Column<string>(type: "VARCHAR(20)", nullable: false),
+                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -218,7 +217,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     ItemBagId = table.Column<int>(type: "int", nullable: true),
                     Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: true)
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,7 +227,7 @@ namespace MargunStore.Infrastructure.Data.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_ItemBags_ItemBagId",
                         column: x => x.ItemBagId,
@@ -329,8 +328,8 @@ namespace MargunStore.Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
-                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true)
+                    Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: true),
+                    ProductId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -344,14 +343,23 @@ namespace MargunStore.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Roles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { "acce3a11-c79e-43fe-acbe-b75f40ffc744", "ed9c2eef-a643-4a12-ad9a-b2cb8e94cba1", "Administrator of sistem", "admin", "ADMIN" });
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Categoria 1" },
+                    { 2, "Categoria 2" },
+                    { 3, "Categoria 3" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { "ccf99cdf-87b3-4656-848a-115b8c4d5577", "45517cea-b927-4842-9a2c-ec6d4454e7cd", "User of sistem", "user", "USER" });
+                values: new object[,]
+                {
+                    { "6fd88725-dee5-45a1-bbf2-6f0f51a9a637", "18e4e7fc-8d71-4919-b31e-e0e587ed5412", "Administrator of sistem", "admin", "ADMIN" },
+                    { "f19d5723-1524-4b8f-8643-f0df7d859a3c", "e03bb586-1b35-414f-9ae0-622c49e880cc", "User of sistem", "user", "USER" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_ClientId",

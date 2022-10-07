@@ -1,13 +1,11 @@
-import { toTypeScript } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/Models/Category';
 import { Image } from 'src/app/Models/Image';
 import { Product } from 'src/app/Models/Product';
 import { CategoryService } from 'src/app/Services/category.service';
-import { ImageService } from 'src/app/Services/image.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -68,11 +66,11 @@ export class CreateProductComponent implements OnInit {
       document.getElementById("image")?.removeAttribute("hidden");
       document.getElementById("image")?.setAttribute("src", value.target?.result)
      this.imageData = value.target?.result;
-     var image = new Image;
-     image.image = this.imageData
+     const image: Image = {
+       image: this.imageData,
+     }
       this.listImage.push(image);
     });
-    
     reader.readAsDataURL(image.target.files[0] as File);
   }
 }

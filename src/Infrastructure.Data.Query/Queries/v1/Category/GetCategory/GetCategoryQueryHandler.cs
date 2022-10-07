@@ -26,11 +26,10 @@ namespace MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory
         {
             try
             {
-                var entity = await _repository.GetEntities().ToArrayAsync();
+                var entity = _repository.GetEntities();
                 var categoryList = _mapper.Map<IEnumerable<CrossCutting.Configuration.Entities.Category>, IEnumerable<GetCategoryQueryResponse>>(entity);
-                var tst = entity.Select(_mapper.Map<CrossCutting.Configuration.Entities.Category, GetCategoryQueryResponse>).Where(value => value.Active == true);
-
-                return tst;
+             
+                return entity.Select(_mapper.Map<CrossCutting.Configuration.Entities.Category, GetCategoryQueryResponse>).Where(value => value.Active == true);
             }
             catch (System.Exception ex)
             {

@@ -14,13 +14,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { CreateProductComponent } from './Components/Product/create-product/create-product.component';
 import { ListProductComponent } from './Components/Product/list-product/list-product.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
-import { DetailProductComponent } from './Components/Product/detail-product/detail-product.component'
+import { DetailProductComponent } from './Components/Product/detail-product/detail-product.component';
+import { LoginComponent } from './Components/User/login/login.component';
+import { CreateUserComponent } from './Components/User/create-user/create-user.component'
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { DetailProductComponent } from './Components/Product/detail-product/deta
     CreateProductComponent,
     ListProductComponent,
     DashboardComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    LoginComponent,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,9 @@ import { DetailProductComponent } from './Components/Product/detail-product/deta
     MatOptionModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

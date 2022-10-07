@@ -1,0 +1,138 @@
+<div class="divSize">
+    <h1 mat-dialog-title>Cadastro de Usuário</h1>
+
+    <div class="divErrors" *ngIf="errors.length > 0">
+        <span *ngFor="let error of errors">* {{error}}</span>
+    </div>
+    
+    <form [formGroup]="form" (ngSubmit)="SubmitForm()">
+        <mat-tab-group>
+            <mat-tab label="Informações Pessoais">
+                <div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput formControlName="name" placeholder="Nome Completo" required minlength="3" maxlength="40">
+                        </mat-form-field>
+                        <mat-error *ngIf="Controls.name.invalid && Controls.name.touched">
+                            <sup>*</sup>Campo inválido
+                        </mat-error>
+                        <mat-error *ngIf="Controls.name.invalid && Controls.name.errors?.minlength">
+                            <sup>*</sup>Digite mais caracteres
+                        </mat-error>
+                        <mat-error *ngIf="Controls.name.invalid && Controls.name.errors?.maxlength">
+                            <sup>*</sup>Digite menos caracteres
+                        </mat-error>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>E-mail</mat-label>
+                            <input type="email" formControlName="email" matInput placeholder="E-mail de usuário" required minlength="5" maxlength="30">
+                        </mat-form-field>
+                        <mat-error *ngIf="Controls.email.invalid && Controls.email.touched">
+                            <sup>*</sup>Campo inválido
+                        </mat-error>
+                        <mat-error *ngIf="Controls.email.invalid && Controls.email.errors?.minlength">
+                            <sup>*</sup>Digite mais caracteres
+                        </mat-error>
+                        <mat-error *ngIf="Controls.email.invalid && Controls.email.errors?.maxlength">
+                            <sup>*</sup>Digite menos caracteres
+                        </mat-error>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Senha</mat-label>
+                            <input type="password" matInput formControlName="password" placeholder="Senha" required minlength="8" maxlength="20">
+                        </mat-form-field>
+                        <mat-error *ngIf="Controls.password.invalid && Controls.password.touched">
+                            <sup>*</sup>Campo inválido
+                        </mat-error>
+                        <mat-error *ngIf="Controls.password.invalid && Controls.password.errors?.minlength">
+                            <sup>*</sup>Digite mais caracteres
+                        </mat-error>
+                        <mat-error *ngIf="Controls.password.invalid && Controls.password.errors?.maxlength">
+                            <sup>*</sup>Digite menos caracteres
+                        </mat-error>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Confirme a Senha</mat-label>
+                            <input type="password" matInput formControlName="confirmPassword" placeholder="Confirme sua senha" required minlength="8" maxlength="20">
+                        </mat-form-field>
+                        <mat-error *ngIf="Controls.confirmPassword.invalid && Controls.confirmPassword.touched">
+                            <sup>*</sup>Campo inválido
+                        </mat-error>
+                        <mat-error *ngIf="Controls.confirmPassword.invalid && Controls.confirmPassword.errors?.minlength">
+                            <sup>*</sup>Digite mais caracteres
+                        </mat-error>
+                        <mat-error *ngIf="Controls.confirmPassword.invalid && Controls.confirmPassword.errors?.maxlength">
+                            <sup>*</sup>Digite menos caracteres
+                        </mat-error>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Contato</mat-label>
+                            <input type="text" matInput formControlName="phoneNumber" placeholder="Contato" required mask="(99) 99999-9999">
+                        </mat-form-field>
+                    </div>
+                </div>                
+            </mat-tab>
+            <mat-tab label="Endereço">
+                <div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>CEP</mat-label>
+                            <input type="text" matInput formControlName="cep" placeholder="Digite o CEP" required>
+                        </mat-form-field>
+                        <button type="button" mat-stroked-button (click)="GetCep()">Buscar</button>
+                    </div>
+                    <br>
+                    <mat-divider></mat-divider>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Rua</mat-label>
+                            <input type="text" matInput formControlName="street" [(ngModel)]="address.street" placeholder="Endereço" >
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Número</mat-label>
+                            <input type="number" matInput formControlName="number" placeholder="Número" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Complemento</mat-label>
+                            <input type="text" matInput formControlName="complement" placeholder="Complemento" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Bairro</mat-label>
+                            <input type="text" matInput formControlName="district" [(ngModel)]="address.district" placeholder="Bairro" >
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Cidade</mat-label>   
+                            <input type="text" matInput formControlName="city" [(ngModel)]="address.city" placeholder="Cidade" >
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="sizeInput">
+                            <mat-label>Estado</mat-label>
+                            <input type="text" matInput formControlName="state" [(ngModel)]="address.state" placeholder="Estado" >
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <br>
+        <mat-divider></mat-divider>
+        <div mat-dialog-actions>
+            <button id="subButton" type="submit" mat-stroked-button>Cadastrar</button>
+            <div class="spacer"></div>
+            <button type="button" mat-stroked-button mat-dialog-close>Voltar</button>
+        </div>
+    </form>
+</div>

@@ -21,8 +21,10 @@ namespace MargunStore.Domain.MapperProfile
             CreateMap<CreateProductCommand, Product>();
             CreateMap<UpdateProductCommand, Product>();
 
-            CreateMap<CreateUserCommand, User>();
             CreateMap<LoginCommand, User>();
+            CreateMap<CreateUserCommand, User>()
+                .ForMember(dest => dest.UserName, map => map.MapFrom(src => src.Email));
+
         }
     }
 }

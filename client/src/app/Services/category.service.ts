@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 
 const options = {
   headers: new HttpHeaders()
-    .set('context-type', 'application/json')
+    .set('content-type', 'application/json')
 }
 @Injectable({
   providedIn: 'root'

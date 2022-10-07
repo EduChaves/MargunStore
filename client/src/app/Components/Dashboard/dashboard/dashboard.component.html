@@ -1,10 +1,10 @@
 <mat-toolbar>
-    <div fxLayout="row" fxLayoutAling="space-between center">
-        <div>
-            <span>MargunStore</span>
-        </div>
-        <div>
-            <span>Login</span>
-        </div>
-    </div>
+    <span>MargunStore</span>
+
+<div class="spacer"></div>
+
+    <a mat-button routerLink="/product/list-product">Produtos</a>
+    <a mat-button>Acessórios</a>
+    <a mat-button>Carrinho</a>
+    <a mat-raised-button (click)="OpenDialog()">Login</a>
 </mat-toolbar>

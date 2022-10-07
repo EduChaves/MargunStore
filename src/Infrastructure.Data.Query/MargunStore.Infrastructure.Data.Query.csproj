@@ -14,6 +14,7 @@
     <ProjectReference Include="..\CrossCutting.Configuration\MargunStore.CrossCutting.Configuration.csproj" />
     <ProjectReference Include="..\CrossCutting.Exception\MargunStore.CrossCutting.Exception.csproj" />
     <ProjectReference Include="..\Infrastructure.Data\MargunStore.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Infrastructure.Service\MargunStore.Infrastructure.Service.csproj" />
   </ItemGroup>
 
 </Project>

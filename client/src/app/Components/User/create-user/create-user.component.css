@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+.sizeInput{
+    width: 90%;
+}
+.spacer{
+    flex: 1 1 auto;
+}
+.divSize{
+    width: 400px;
+}
+.divErrors{
+    background-color: rgb(243, 93, 93);
+    width: 90%;
+    padding: 2%;
+    border-radius: 2%;
+    align-items: center;
+}

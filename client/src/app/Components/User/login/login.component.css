@@ -1,0 +1,22 @@
+.divSetting{
+    width:400px;
+    padding: 2%;
+}
+.sizeInput{
+    width: 100%;
+}
+.buttomAlign{
+    display: flex;
+    justify-content: start;
+}
+h1{
+    text-align: center;
+}
+.spacer{
+    flex: 1 1 auto;
+}
+.forgotPassword{
+    font-size: 12px;
+    color: rgb(33, 33, 206);
+    align-items: center;
+}

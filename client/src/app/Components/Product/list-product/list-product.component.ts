@@ -19,5 +19,4 @@ export class ListProductComponent implements OnInit {
       result.forEach(value => this.listProducts.push(value))
     });
   }
-
 }

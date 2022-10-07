@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MargunStore.CrossCutting.Configuration.Shared.Extensions;
 using MargunStore.CrossCutting.Exception;
 using MargunStore.Infrastructure.Data.Interfaces;
 using MediatR;
@@ -23,6 +24,10 @@ namespace MargunStore.Domain.Commands.v1.Product.Create
             try
             {
                 var product = _mapper.Map<CrossCutting.Configuration.Entities.Product>(request);
+                
+                foreach(var value in product.Images)
+                    value.Image = ConvertExtensions.EncodeToBase64(value.Image);
+
                 await _repository.Add(product);
 
                 return new CreateProductCommandResponse();

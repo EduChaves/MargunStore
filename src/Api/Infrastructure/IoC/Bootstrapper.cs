@@ -14,10 +14,11 @@ using MargunStore.Infrastructure.Data.Interfaces;
 using MargunStore.Infrastructure.Data.Query.MapperProfile;
 using MargunStore.Infrastructure.Data.Query.Queries.v1.Category.GetCategory;
 using MargunStore.Infrastructure.Data.Repositories;
+using MargunStore.Infrastructure.Service.Interfaces.CorreiosApi;
+using MargunStore.Infrastructure.Service.ServiceHandlers.CorreiosApi;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -63,6 +64,7 @@ namespace MargunStore.Api.Infrastructure.IoC
             _services.AddScoped<IRoleRepository, RoleRepository>();
             _services.AddScoped<IUserRepository, UserRepository>();
             _services.AddScoped<IClientRepository, ClientRepository>();
+            _services.AddScoped<ICorreiosService, CorreiosServiceClient>();
 
             _services.AddDbContext<Context>(value => value.UseSqlServer(_configuration.GetConnectionString("DatabaseConnection")).EnableSensitiveDataLogging());
             _services.AddControllers().AddFluentValidation(value => 
@@ -84,8 +86,8 @@ namespace MargunStore.Api.Infrastructure.IoC
             _services.AddAutoMapper(assemblies);
             _services.AddMediatR(assemblies);
             
-            AuthenticationSetting();
             ConfigureCORS();
+            AuthenticationSetting();
             IdentityInitialize();
         }
 

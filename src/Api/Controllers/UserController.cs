@@ -1,5 +1,6 @@
 ﻿using MargunStore.Domain.Commands.v1.User.Create;
 using MargunStore.Domain.Commands.v1.User.Login;
+using MargunStore.Infrastructure.Data.Query.Queries.v1.Address.GetCep;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -24,5 +25,8 @@ namespace MargunStore.Api.Controllers
 
         [HttpPost("login")]
         public async Task<LoginCommandResponse> Login(LoginCommand request) => await _mediator.Send(request);
+
+        [HttpGet("address/cep")]
+        public async Task<GetCepQueryResponse> GetCep(string request) => await _mediator.Send(new GetCepQuery { Cep = request });
     }
 }

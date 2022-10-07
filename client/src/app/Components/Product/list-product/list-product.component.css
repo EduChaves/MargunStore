@@ -1,6 +1,6 @@
 .AlingProducts{
     display: flex;
-    margin-top: 1%;
+    padding: 3%;
 }
 .CardSetting{
     margin-right: 10%;

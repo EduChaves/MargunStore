@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Product } from '../Models/Product';
 import { BaseService } from './base.service';
 
-const options = { 
+const options = {
   headers: new HttpHeaders()
     .set('content-type', 'application/json')
 }
@@ -24,6 +24,6 @@ export class ProductService extends BaseService{
 
   GetProducts(id: number | null): Observable<Product[]> {
     const urlRequest = id != null ? `${this.url}?id=${id}` : this.url;
-    return this.http.get<Product[]>(`${this.baseUrl}${urlRequest}`);
+    return this.http.get<Product[]>(`${this.baseUrl}${urlRequest}`, options);
   }
 }
